@@ -1,0 +1,69 @@
+[
+    {
+        "food_id": "1",
+        "food_img": "https://i.ibb.co/hmTPbW9/Margherita-Pizza-094.jpg",
+        "food_name": "Pizza",
+        "donator_name": "Rehana Sheikh",
+        "donator_img": "https://i.ibb.co/vd5x0N1/4043247-1-avatar-female-portrait-woman-113261.png",
+        "food_quantity": "10",
+        "location": "20.00",
+        "expired_date": "24/12/2023",
+        "additional_notes": "Pizza is a beloved Italian dish that has become a global culinary phenomenon. "
+    },
+    {
+        "food_id": "2",
+        "food_img": "https://i.ibb.co/J3bfjds/featured-stovetop-burgers-recipe.jpg",
+        "food_name": "Burger",
+        "donator_name": "Babor Azmar",
+        "donator_img": "https://i.ibb.co/pfDBzNB/avatar-3637425-1280.png",
+        "food_quantity": "7",
+        "location": "20.00",
+        "expired_date": "20/12/2023",
+        "additional_notes": "Burgers are a quintessential comfort food enjoyed globally, known for their juicy."
+    },
+    {
+        "food_id": "3",
+        "food_img": "https://i.ibb.co/9Wwb54W/Cauliflower-Shawarma-8.jpg",
+        "food_name": "Shwarma",
+        "donator_name": "Nilima yean",
+        "donator_img": "https://i.ibb.co/RzwKT0w/person-avatar-design-24877-38130.jpg",
+        "food_quantity": "4",
+        "location": "20.00",
+        "expired_date": "2/12/2023",
+        "additional_notes": "Shawarma is a Middle Eastern culinary delight characterized by thinly sliced cuts."
+    },
+    {
+        "food_id": "4",
+        "food_img": "https://i.ibb.co/Xp8wkrs/Weeknight-Creamy-Sri-Lankan-Chicken-Curry-02.jpg",
+        "food_name": "Chicken Curry",
+        "donator_name": "yeakin Jahan",
+        "donator_img": "https://i.ibb.co/pzXqykd/images-q-tbn-ANd9-Gc-QAsnr-Twdv-Jt99dz5-HXHOq02-CCLdl76-s-XIi-Ah-P1-JVs-Sa3-WR1-Ak-EAq-Fpdr-Nfq0as-G.png",
+        "food_quantity": "3",
+        "location": "20.00",
+        "expired_date": "18/12/2023",
+        "additional_notes": "The dish can vary widely in taste and texture, ranging from mild and creamy"
+    },
+    {
+        "food_id": "5",
+        "food_img": "https://i.ibb.co/z2CG9YD/Webp-net-compress-image-36.jpg",
+        "food_name": "Biryani",
+        "donator_name": "Tara Ayman",
+        "donator_img": "https://i.ibb.co/tDW4G8d/businesswoman-character-avatar-icon-vector-11773829.jpg",
+        "food_quantity": "20.00",
+        "location": "20.00",
+        "expired_date": "17/12/2023",
+        "additional_notes": "The dish is a culinary delight, enjoyed during special occasions, celebrations."
+    },
+    {
+        "food_id": "6",
+        "food_img": "https://i.ibb.co/1Rq9vnn/61b31c9d289e22335b6753b2-Ice-Cream-2.jpg",
+        "food_name": "Ice-Cream",
+        "donator_name": "Faruk Hasan",
+        "donator_img": "https://i.ibb.co/pzsYh06/5556520.png",
+        "food_quantity": "4",
+        "location": "20.00",
+        "expired_date": "16/12/2023",
+        "additional_notes": "ce cream is a frozen dessert enjoyed worldwide, known for its creamy texture ."
+    }
+    
+]
