@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Featured2 = ({feature}) => {
-    const { food_id, food_img, food_name, donator_name, donator_img, food_quantity, location, expired_date, additional_notes } = feature ;
+    const {_id, food_id, food_img, food_name, donator_name, donator_img, food_quantity, location, expired_date, additional_notes } = feature ;
     return (
         <div>
             <div className="card bg-base-100 shadow-xl ">
@@ -32,7 +33,10 @@ const Featured2 = ({feature}) => {
                     </div>
                     
                     <div className="card-actions justify-end">
-                        <button className='btn btn-warning text-white font-bold'>Details</button>
+                        <Link to={`/singlefood/${_id}`}>
+                            <button className='btn btn-warning text-white font-bold'>Details</button>
+                        </Link>
+                       
                     </div>
                 </div>
             </div>

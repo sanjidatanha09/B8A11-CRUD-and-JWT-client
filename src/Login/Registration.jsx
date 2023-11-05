@@ -5,6 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaBeer, FaRegEyeSlash, FaEye } from 'react-icons/fa';
 import { AuthContext } from '../Providers.jsx/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Registration = () => {
     const [registererror, setRegistererror] = useState('');
@@ -17,11 +18,11 @@ const Registration = () => {
         e.preventDefault();
         console.log(e.currentTarget);
         const form = new FormData(e.currentTarget);
-        const name = form.get('name')
-        const photourl = form.get('photourl')
+        const displayName = form.get('displayName')
+        const photoURL = form.get('photoURL')
         const email =form.get('email')
         const password = form.get('password')
-        console.log(name, photourl,email, password);
+        console.log(displayName, photoURL,email, password);
 
         //reset error
         setRegistererror('');
@@ -45,18 +46,41 @@ const Registration = () => {
        
 
         //create user
-        createUser(email,password)
-        .then(result =>{
-            console.log(result.user);
-            // setSuccess('user created successfully')
-            toast('user created successfully')
-            
-        })
-        .catch(error =>{
-            console.error(error);
-            toast(error.message);
-            
-        })
+        createUser(email, password)
+            .then(result => {
+                console.log(result.user);
+                //new user has been created
+                const Name = result.user?.auth?.displayName;
+                const createAt = result.user?.metadata?.creationTime;
+
+                const user = { email, createAt: createAt ,Name:Name};
+                
+                fetch('http://localhost:5000/user', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.insertedId) {
+                            console.log('user added success');
+                            Swal.fire({
+                                title: 'Success!',
+                                text: 'user added successfully',
+                                icon: 'success',
+                                confirmButtonText: 'Cool'
+                            })
+
+                        }
+                    })
+            })
+            .catch(error => {
+                console.error(error)
+                toast(error.message);
+
+            })
 
     }
 
@@ -75,14 +99,14 @@ const Registration = () => {
                         <label className="label">
                             <span className="label-text font-bold lg:text-2xl text-orange-600">Name</span>
                         </label>
-                        <input type="text" placeholder="name" name="name" className="input input-bordered text-orange-800" required />
+                        <input type="text" placeholder="displayName" name="displayName" className="input input-bordered text-orange-800" required />
                     </div>
 
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text font-bold lg:text-2xl text-orange-600">Photo URL</span>
                         </label>
-                        <input type="text" placeholder="photo url" name="photourl" className="input input-bordered text-orange-800" required />
+                        <input type="text" placeholder="photo url" name="photoURL" className="input input-bordered text-orange-800" required />
                     </div>
 
 

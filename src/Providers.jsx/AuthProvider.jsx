@@ -22,9 +22,9 @@ const AuthProvider = ({ children }) => {
     }
 
     //regi login
-    const createUser = (email, password) => {
+    const createUser = (email, password,photoURL,displayName) => {
         setLoading(true);
-        return createUserWithEmailAndPassword(auth, email, password)
+        return createUserWithEmailAndPassword(auth, email, password,photoURL,displayName)
     }
 
     //user login

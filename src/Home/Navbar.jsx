@@ -1,7 +1,17 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../Providers.jsx/AuthProvider';
+import { FaGithub, FaGofore, FaUserCircle, FaToggleOn } from 'react-icons/fa';
 
 const Navbar = () => {
+    const { user, logOUt } = useContext(AuthContext);
+
+    const handleSignOut = () => {
+        logOUt()
+            .then()
+            .catch()
+
+    }
     const navLinks = <>
 
         <li><NavLink className='' to="/">Home</NavLink></li>
@@ -40,29 +50,39 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className='navbar-end '>
-                    <NavLink className='text-xl font-bold text-white btn btn-warning' to="/login">Login</NavLink>
+                    
+
+                </div><div className="navbar-end ">
+
+                    <div className='flex justify-end items-center gap-5'>
+
+
+                        {
+                            user ?
+                                <button onClick={handleSignOut} className='btn btn-warning text-white'>Log Out</button>
+
+                                :
+                                <Link className='flex justify-center items-center gap-3' to="/login">
+                                    <NavLink className='text-xl font-bold text-white btn btn-warning' to="/login">Login</NavLink>
+
+                                </Link>
+
+                        }
+                        {/* <div>
+                            <p className='text-sm font-bold'>{user?.email}</p>
+
+
+                        </div> */}
+
+
+                    </div>
+
+
+
 
                 </div>
 
-                {/* <div className="navbar-end">
-                    {
-                        user?.email ? <>
-
-                            <Link to="/booking">My Booking</Link>
-
-
-
-                            <button onClick={handleLogOut} className='btn btn-primary'>Logout</button>
-
-                        </>
-
-
-                            :
-
-                            <NavLink to="/login">Login</NavLink>
-                    }
-
-                </div> */}
+                
             </div>
         </div>
     );
