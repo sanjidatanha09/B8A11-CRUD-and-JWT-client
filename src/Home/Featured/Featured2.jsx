@@ -5,7 +5,7 @@ const Featured2 = ({food}) => {
     const { foodname, foodimage, foodquantity, location, date, additionalnotes, foodstatus, donatorname, donatorimage, donatoremail } = food;
     return (
         <div>
-            <div className="card bg-base-100 shadow-xl ">
+            <div className="card  bg-base-100 shadow-xl ">
                 <figure><img className='w-full h-[300px]' src={foodimage} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title lg:text-3xl">

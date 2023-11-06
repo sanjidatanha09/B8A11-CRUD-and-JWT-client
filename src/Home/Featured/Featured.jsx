@@ -50,9 +50,9 @@ const Featured = () => {
                 }
 
             </div>
-            <div className='w-[600px] mx-auto'>
+            <div className='w-[200px] md:w[400px] lg:w-[600px] mx-auto'>
                 <Link to='/availablfoods'>
-                    <button className='btn btn-warning text-white  font-bold lg:text-3xl border w-[500px] mx-auto mt-10'>Show All</button>
+                    <button className='btn btn-warning text-white  font-bold lg:text-3xl border w-[200px] md:w-[300px] lg:w-[500px] mx-auto mt-10'>Show All</button>
                 </Link>
 
 
