@@ -20,6 +20,8 @@ import ManageFoods from './Pages/ManageFood/ManageFoods';
 
 
 
+
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -50,6 +52,7 @@ const router = createBrowserRouter([
         element:<ManageFoods></ManageFoods>,
         loader: () => fetch('http://localhost:5000/allfood'),
       },
+
       {
         path: '/foodrequest',
         element: <FoodRequest></FoodRequest>,
