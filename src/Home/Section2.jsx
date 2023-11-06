@@ -2,16 +2,17 @@ import React from 'react';
 
 const Section2 = () => {
     return (
-        <div className='flex justify-center items-center'>
-            <div className='lg:w-[50%]'>
-                <div>
-                    <img src="https://i.ibb.co/VQJSF22/tiny-people-standing-near-box-donation-food-delivery-volunteers-giving-healthy-grocery-goods-charity.jpg" alt="" />
+        <div className='lg:flex justify-center items-center mb-36'>
+            <div className='lg:w-[50%] relative'>
+                <div className='lg:w-3/4 '>
+                    <img className='w-full' src="https://i.ibb.co/sKpLB76/Bull-Bell-Steakhouse-CREDITDestination-Riverina-Murray.jpg" alt="" />
 
                 </div>
-                <div>
-                    <img src="" alt="" />
+                <div className='lg:w-3/5 absolute top-52 left-48 '>
+                    <img className='w-full rounded-full' src="https://i.ibb.co/VQJSF22/tiny-people-standing-near-box-donation-food-delivery-volunteers-giving-healthy-grocery-goods-charity.jpg" alt="" />
 
                 </div>
+               
                 
                 
             </div>
