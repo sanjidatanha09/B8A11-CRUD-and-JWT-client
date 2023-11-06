@@ -5,6 +5,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaBeer, FaRegEyeSlash, FaEye } from 'react-icons/fa';
 import { AuthContext } from '../Providers.jsx/AuthProvider';
+import Lottie from 'lottie-react';
+import loginanimation from '../../public/login.json'
 
 const Login = () => {
     const [showpassword, setShowpassword] = useState(false);
@@ -50,9 +52,11 @@ const Login = () => {
     return (
        <div>
             <div className='flex flex-col lg:flex-row w-full px-10 md:pb-10'>
-                <div className="text-center lg:text-left lg:w-[50%]">
+                <div className="text-center lg:text-left lg:w-[50%] lg:mt-36">
 
-                    <img className='w-full lg:px-5 pt-28 h-[600px]' src='https://i.ibb.co/N90L5LC/images-q-tbn-ANd9-Gc-Rm-K3hf9kn0o4w-SBzq7j2-Fv-Up-Pgz-ZOj-L58-O7-A-usqp-CAU.png' alt="" />
+                    <Lottie animationData={loginanimation}></Lottie>
+
+                    
                 </div>
 
                 <div className='lg:w-[50%]'>
