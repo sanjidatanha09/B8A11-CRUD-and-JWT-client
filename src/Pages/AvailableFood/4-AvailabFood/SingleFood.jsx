@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../../Providers.jsx/AuthProvider";
 
 
 const SingleFood = () => {
+    const { user } = useContext(AuthContext);
     
     const fansi =useLoaderData();
     console.log(fansi)
@@ -35,19 +38,159 @@ const SingleFood = () => {
 
                     <div className="card-actions justify-end">
 
-                        {/* <button className='btn btn-warning text-white font-bold'>Request Food</button> */}
 
 
                         {/* Open the modal using document.getElementById('ID').showModal() method */}
-                        <button className="btn btn-warning text-white font-bold" onClick={() => document.getElementById('my_modal_5').showModal()}>open modal</button>
+
+
+                        <button className="btn btn-warning text-white font-bold" onClick={() => document.getElementById('my_modal_5').showModal()}>Request Food</button>
+
+
                         <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
                             <div className="modal-box">
-                                <h3 className="font-bold text-lg">Hello!</h3>
-                                <p className="py-4">Press ESC key or click the button below to close</p>
+        
+                                
                                 <div className="modal-action">
                                     <form method="dialog">
                                         {/* if there is a button in form, it will close the modal */}
-                                        <button className="btn">Close</button>
+
+                                        <div className='md:flex lg:flex justify-between items-center gap-6 '>
+
+                                            <div className="form-control md:w-3/6 lg:w-3/6">
+                                                <label className="label">
+                                                    <span className="label-text text-orange-700 font-bold lg:text-lg">Food Name</span>
+                                                </label>
+                                                <label className="input-group">
+
+                                                    <input type="text" name="foodname" placeholder="foodname " className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
+                                                </label>
+                                            </div>
+
+                                            <div className="form-control md:w-3/6 lg:w-3/6">
+                                                <label className="label">
+                                                    <span className="label-text text-orange-700 font-bold lg:text-lg"> Food Image</span>
+                                                </label>
+                                                <label className="input-group">
+
+                                                    <input type="text" name="foodimage" placeholder="food image" className=" text-orange-500 input input-bordered w-full lg:text-sm font-bold" />
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                        <div className='md:flex lg:flex justify-between items-center gap-6 '>
+
+                                            <div className="form-control md:w-3/6 lg:w-3/6">
+                                                <label className="label">
+                                                    <span className="label-text text-orange-700 font-bold lg:text-lg">Food Id</span>
+                                                </label>
+                                                <label className="input-group">
+
+                                                    <input type="text" name="foodid" placeholder="food id " className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
+                                                </label>
+                                            </div>
+
+                                            <div className="form-control md:w-3/6 lg:w-3/6">
+                                                <label className="label">
+                                                    <span className="label-text text-orange-700 font-bold lg:text-lg"> Donator email</span>
+                                                </label>
+                                                <label className="input-group">
+
+                                                    <input type="text" name="donatoremail" placeholder="donator email"  className=" text-orange-500 input input-bordered w-full lg:text-sm font-bold" />
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                        <div className='md:flex lg:flex justify-between items-center gap-6 '>
+
+                                            <div className="form-control md:w-3/6 lg:w-3/6">
+                                                <label className="label">
+                                                    <span className="label-text text-orange-700 font-bold lg:text-lg">Donator Name</span>
+                                                </label>
+                                                <label className="input-group">
+
+                                                    <input type="text" name="donatorname" placeholder="donator name" className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
+                                                </label>
+                                            </div>
+
+                                            <div className="form-control md:w-3/6 lg:w-3/6">
+                                                <label className="label">
+                                                    <span className="label-text text-orange-700 font-bold lg:text-lg"> User email</span>
+                                                </label>
+                                                <label className="input-group">
+
+                                                    <input type="text" name="useremail" placeholder="user email" defaultValue={user?.email} className=" text-orange-500 input input-bordered w-full lg:text-sm font-bold" />
+                                                </label>
+                                            </div>
+
+                                        </div>
+
+                                        <div className='md:flex lg:flex justify-between items-center gap-6 '>
+
+                                            <div className="form-control md:w-3/6 lg:w-3/6">
+                                                <label className="label">
+                                                    <span className="label-text text-orange-700 font-bold lg:text-lg">Request Date</span>
+                                                </label>
+                                                <label className="input-group">
+
+                                                    <input type="text" name="date" placeholder="request date" className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
+                                                </label>
+                                            </div>
+
+                                            <div className="form-control md:w-3/6 lg:w-3/6">
+                                                <label className="label">
+                                                    <span className="label-text text-orange-700 font-bold lg:text-lg"> Pickup Location</span>
+                                                </label>
+                                                <label className="input-group">
+
+                                                    <input type="text" name="location" placeholder="location"  className=" text-orange-500 input input-bordered w-full lg:text-sm font-bold" />
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                        <div className='md:flex lg:flex justify-between items-center gap-6 '>
+
+                                            <div className="form-control md:w-3/6 lg:w-3/6">
+                                                <label className="label">
+                                                    <span className="label-text text-orange-700 font-bold lg:text-lg">Expire Date</span>
+                                                </label>
+                                                <label className="input-group">
+
+                                                    <input type="text" name="expiredate" placeholder="expire date" className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
+                                                </label>
+                                            </div>
+
+                                            <div className="form-control md:w-3/6 lg:w-3/6">
+                                                <label className="label">
+                                                    <span className="label-text text-orange-700 font-bold lg:text-lg">Donation Money</span>
+                                                </label>
+                                                <label className="input-group">
+
+                                                    <input type="text" name="money" placeholder="money"  className=" text-orange-500 input input-bordered w-full lg:text-sm font-bold" />
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                        <div className='md:flex lg:flex justify-between items-center gap-6 '>
+
+                                            
+
+                                            <div className="form-control md:w-3/6 lg:w-3/4">
+                                                <label className="label">
+                                                    <span className="label-text text-orange-700 font-bold lg:text-lg">Additional Notes</span>
+                                                </label>
+                                                <label className="input-group">
+
+                                                    <input type="text" name="money" placeholder="money" className=" text-orange-500 input input-bordered w-full lg:text-sm font-bold" />
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                        <div className="w-[50%] mx-auto">
+                                            <button className="btn text-white btn-warning  mt-5 ">Request Food</button>
+
+                                        </div>
+                                        
+                                        
                                     </form>
                                 </div>
                             </div>
