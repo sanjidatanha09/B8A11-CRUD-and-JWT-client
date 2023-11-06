@@ -16,7 +16,8 @@ import AvailableFoods from './Pages/AvailableFood/AvailableFoods';
 import AddFood from './Pages/AddFood';
 import ManageFoods from './Pages/ManageFoods';
 import FoodRequest from './Pages/FoodRequest';
-import SingleFood from './Home/Featured/Featured3/SingleFood';
+import SingleFood from './Pages/AvailableFood/4-AvailabFood/SingleFood';
+
 
 const router = createBrowserRouter([
   {
@@ -31,13 +32,13 @@ const router = createBrowserRouter([
       {
         path: '/singlefood/:id',
         element: <SingleFood></SingleFood>,
-        loader: ({ params }) => fetch(`http://localhost:5000/features/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/onefood/${params.id}`)
       
       }, 
       {
         path: '/availablfoods',
         element: <AvailableFoods></AvailableFoods>,
-        loader: () => fetch('http://localhost:5000/food'),
+        loader: () => fetch('http://localhost:5000/allfood'),
       },
       {
         path: '/addfood',

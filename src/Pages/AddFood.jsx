@@ -11,13 +11,16 @@ const AddFood = () => {
 
         const foodname = form.foodname.value;
         const foodimage = form.foodimage.value;
+        const donatorimage = form.donatorimage.value;
+        const donatorname = form.donatorname.value;
         const foodquantity = form.foodquantity.value;
         const location = form.location.value;
         const date = form.date.value;
         const additionalnotes = form.additionalnotes.value;
         const foodstatus = form.foodstatus.value;
+        const donatoremail = form.donatoremail.value;
 
-        const newFood = { foodname, foodimage, foodquantity, location, date, additionalnotes, foodstatus }
+        const newFood = { foodname, foodimage, donatorimage, donatorname, foodquantity, location, date, additionalnotes, foodstatus, donatoremail }
 
         console.log(newFood);
 
@@ -88,7 +91,31 @@ const AddFood = () => {
                             </label>
                             <label className="input-group">
 
-                                <input type="text" name="foodimage" placeholder="food image" className="input input-bordered w-full" />
+                                <input type="text" name="foodimage" placeholder="food image" className=" text-orange-500 input input-bordered w-full" />
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <div className='md:flex lg:flex justify-between items-center gap-6 '>
+
+                        <div className="form-control md:w-3/6 lg:w-3/6">
+                            <label className="label">
+                                <span className="label-text text-orange-700 font-bold lg:text-xl">Donator Image</span>
+                            </label>
+                            <label className="input-group">
+
+                                <input type="text" name="donatorimage" defaultValue={user?.photoURL}  placeholder="donator image " className="input input-bordered w-full text-orange-500 font-bold lg:text-xl" />
+                            </label>
+                        </div>
+
+                        <div className="form-control md:w-3/6 lg:w-3/6">
+                            <label className="label">
+                                <span className="label-text text-orange-700 font-bold lg:text-xl"> Donator Name</span>
+                            </label>
+                            <label className="input-group">
+
+                                <input type="text" defaultValue={user?.displayName} name="donatorname" placeholder="donator name" className="input text-orange-500 input-bordered w-full" />
                             </label>
                         </div>
 
@@ -101,7 +128,7 @@ const AddFood = () => {
                             </label>
                             <label className="input-group">
 
-                                <input type="text" name="foodquantity" placeholder="food quantity" className="input input-bordered w-full" />
+                                <input type="text" name="foodquantity" placeholder="food quantity" className="input text-orange-500 input-bordered w-full" />
                             </label>
                         </div>
                         <div className="form-control md:w-3/6 lg:w-3/6">
@@ -110,7 +137,7 @@ const AddFood = () => {
                             </label>
                             <label className="input-group">
 
-                                <input type="text" name="location" placeholder="location" className="input input-bordered w-full" />
+                                <input type="text" name="location" placeholder="location" className="input input-bordered w-full text-orange-500" />
                             </label>
                         </div>
                     </div>
@@ -122,7 +149,7 @@ const AddFood = () => {
                             </label>
                             <label className="input-group">
 
-                                <input type="date" name="date" placeholder="expired date" className="input input-bordered w-full" />
+                                <input type="date" name="date" placeholder="expired date" className="input input-bordered text-orange-500 w-full" />
                             </label>
                         </div>
                         <div className="form-control md:w-3/6 lg:w-3/6">
@@ -131,20 +158,32 @@ const AddFood = () => {
                             </label>
                             <label className="input-group">
 
-                                <input type="text" name="additionalnotes" placeholder="additional notes" className="input input-bordered w-full" />
+                                <input type="text" name="additionalnotes" placeholder="additional notes" className="input input-bordered w-full text-orange-500" />
+                            </label>
+                        </div>
+                    </div>
+                    <div className='md:flex lg:flex justify-between items-center gap-6'>
+                        <div className="form-control md:w-3/6 lg:w-3/6">
+                            <label className="label">
+                                <span className="label-text text-orange-700 font-bold lg:text-xl">Food Status</span>
+                            </label>
+                            <label className="input-group">
+
+                                <input type="text" name="foodstatus" placeholder="food status" defaultValue='Available' className="input text-orange-500 input-bordered w-full" />
+                            </label>
+                        </div>
+                        <div className="form-control md:w-3/6 lg:w-3/6">
+                            <label className="label">
+                                <span className="label-text text-orange-700 font-bold lg:text-xl">Donator Email</span>
+                            </label>
+                            <label className="input-group">
+
+                                <input type="text" defaultValue={user?.email} name="donatoremail" placeholder="donator email" className="input input-bordered w-full text-orange-500" />
                             </label>
                         </div>
                     </div>
 
-                    <div className="form-control w-full">
-                        <label className="label">
-                            <span className="label-text text-orange-700 font-bold lg:text-xl">Food Status</span>
-                        </label>
-                        <label className="input-group">
-
-                            <input type="text" name="foodstatus" placeholder="food status" className="input input-bordered w-full" />
-                        </label>
-                    </div>
+                   
                     <div className='pt-10'>
                         <button className="btn btn-warning text-white lg:text-2xl ">Add Food</button>
 

@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
-import AvailableFoodCard from './AvailableFoodCard';
+import AvailableFood2 from './AvailableFood2';
 
 const AvailableFoods = () => {
 
     const availableFood = useLoaderData();
+    console.log(availableFood)
+
+    const [fullCampaignes, setFullCampaignes] = useState(availableFood);
+
+    const handleSearch = (e) => {
+        const search = document.getElementById("searchinput").value;
+        console.log(search);
+        const lowerCase = search.toLowerCase()
+        e.preventDefault();
+
+        const filtercampaignes = availableFood.filter(
+            (foods) => foods.foodname.toLowerCase().includes(lowerCase)
+        );
+
+        setFullCampaignes(filtercampaignes);
+        
+
+    };
 
     return (
         <div>
@@ -21,7 +39,7 @@ const AvailableFoods = () => {
                             <div className="flex justify-center items-center">
                                 <input id='searchinput' type="text" placeholder="Search here" className="input input-bordered  md:w-[275px]  lg:w-[490px]  p-2 md:p-3 lg:p-3 rounded-s-xl" />
 
-                                <input className=" md:w-[100px] lg:w-[120px] p-2 bg-warning text-white lg:font-bold text-base md:text-2xl lg:text-2xl rounded-e-xl " type="submit" value="Submit" />
+                                <input onClick={handleSearch} className=" md:w-[100px] lg:w-[120px] p-2 bg-warning text-white lg:font-bold text-base md:text-2xl lg:text-2xl rounded-e-xl " type="submit" value="Submit" />
 
                             </div>
 
@@ -32,26 +50,11 @@ const AvailableFoods = () => {
                     </div>
                 </div>
 
-            </div>
+            </div> 
+            length:{availableFood.length}
 
-            <div className='text-center font-bold md:text-2xl lg:text-3xl mb-5'>
-                Total Available Food:{availableFood.length}
-            </div>
-
-
-            <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-5 px-2  lg:px-0'>
-                {
-                    availableFood.map(food => <AvailableFoodCard
-                    key={food._id}
-                    food={food}
-                    
-                    
-                    ></AvailableFoodCard>)
-                }
-            </div>
-
-
-
+            <AvailableFood2 availableFood={fullCampaignes}></AvailableFood2>
+            
         </div>
     );
 };
