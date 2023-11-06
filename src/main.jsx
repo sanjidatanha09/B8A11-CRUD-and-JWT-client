@@ -14,9 +14,9 @@ import Registration from './Login/Registration'
 import AuthProvider from './Providers.jsx/AuthProvider';
 import AvailableFoods from './Pages/AvailableFood/AvailableFoods';
 import AddFood from './Pages/AddFood';
-import ManageFoods from './Pages/ManageFoods';
 import FoodRequest from './Pages/FoodRequest';
 import SingleFood from './Pages/AvailableFood/4-AvailabFood/SingleFood';
+import ManageFoods from './Pages/ManageFood/ManageFoods';
 
 
 const router = createBrowserRouter([
@@ -47,6 +47,7 @@ const router = createBrowserRouter([
       {
         path: '/managefood',
         element:<ManageFoods></ManageFoods>,
+        loader: () => fetch('http://localhost:5000/allfood'),
       },
       {
         path: '/foodrequest',
