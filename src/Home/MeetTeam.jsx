@@ -1,9 +1,34 @@
 import React from 'react';
+import {motion} from 'framer-motion'
 
 const MeetTeam = () => {
     return (
+       
         <div className='text-center  font-bold my-10'>
-            <h1 className='text-2xl md:text-3xl lg:text-4xl text-gray-700 mb-10'>Meet Our Team</h1>
+
+
+
+            
+
+
+            <h1 className='text-2xl md:text-3xl lg:text-4xl text-gray-700 mb-10'>
+                
+                <motion.h1
+                    initial={{ x: -900 }}
+                    animate={{ x: 0 }}
+                    transition={{
+                        duration: '2',
+                        delay: '1'
+                    }}
+                >
+
+                    Meet Our Team
+
+                </motion.h1>
+                
+                
+                
+                </h1>
             <div className='md:grid grid-cols-2 lg:flex justify-center items-center gap-10'>
 
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Featured2 from './Featured2';
 import { Link, useLoaderData } from 'react-router-dom';
+import { motion } from 'framer-motion'
 
 const Featured = () => {
 
@@ -39,7 +40,24 @@ const Featured = () => {
 
     return (
         <div className='mb-10'>
-            <p className='font-bold text-5xl my-10 text-center'>Features : {foods.length}</p>
+            <p className='font-bold text-5xl my-10 text-center'>
+                <motion.h1
+                    initial={{ x: -900 }}
+                    animate={{ x: 0 }}
+                    transition={{
+                        duration: '2',
+                        delay: '1'
+                    }}
+                >
+
+                    Features : {foods.length}
+
+                </motion.h1>
+
+                
+                
+                
+                </p>
             <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 {
                     foods.map(food => <Featured2
