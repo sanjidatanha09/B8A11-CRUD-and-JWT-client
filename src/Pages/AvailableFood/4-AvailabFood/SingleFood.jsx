@@ -1,14 +1,68 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../Providers.jsx/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const SingleFood = () => {
     const { user } = useContext(AuthContext);
+    // function goHome() {
+    //     window.location.reload();
+    // }
+    // document.getElementById('gohome-button').addEventListener('click', goHome);
+
     
     const fansi =useLoaderData();
     console.log(fansi)
-    const { foodname, foodimage, foodquantity, location, date, additionalnotes, foodstatus, donatorname, donatorimage, donatoremail } = fansi;
+    const { _id,foodname, foodimage, foodquantity, location, date, additionalnotes, foodstatus, donatorname, donatorimage, donatoremail } = fansi;
+
+    const handleAddFood = event => {
+        event.preventDefault();
+        const form = event.target;
+
+        const foodname = form.foodname.value;
+        const foodimage = form.foodimage.value;
+        const foodid = form.foodid.value;
+        const donatoremail = form.donatoremail.value;
+        const donatorname = form.donatorname.value;
+        const useremail = form.useremail.value;
+        const requestdate = form.requestdate.value;
+        const location = form.location.value;
+        const expiredate = form.expiredate.value;
+        const money = form.money.value;
+        const additionalnotes = form.additionalnotes.value;
+       
+        
+       
+
+        const requestFood = { foodname, foodimage, foodid, useremail, requestdate, donatoremail, donatorname, useremail, location, expiredate, additionalnotes, money, donatoremail }
+
+        console.log(requestFood);
+
+        //send data to the server 
+        fetch('http://localhost:5000/requestfood', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(requestFood)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Food Added Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    })
+
+                }
+            })
+
+    }
+
 
     return (
         <div>
@@ -51,7 +105,7 @@ const SingleFood = () => {
         
                                 
                                 <div className="modal-action">
-                                    <form method="dialog">
+                                    <form onSubmit={handleAddFood}>
                                         {/* if there is a button in form, it will close the modal */}
 
                                         <div className='md:flex lg:flex justify-between items-center gap-6 '>
@@ -62,7 +116,7 @@ const SingleFood = () => {
                                                 </label>
                                                 <label className="input-group">
 
-                                                    <input type="text" name="foodname" placeholder="foodname " className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
+                                                    <input type="text" name="foodname" placeholder="foodname " defaultValue={foodname} className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
                                                 </label>
                                             </div>
 
@@ -72,7 +126,7 @@ const SingleFood = () => {
                                                 </label>
                                                 <label className="input-group">
 
-                                                    <input type="text" name="foodimage" placeholder="food image" className=" text-orange-500 input input-bordered w-full lg:text-sm font-bold" />
+                                                    <input type="text" name="foodimage" placeholder="food image" defaultValue={foodimage} className=" text-orange-500 input input-bordered w-full lg:text-sm font-bold" />
                                                 </label>
                                             </div>
 
@@ -85,7 +139,7 @@ const SingleFood = () => {
                                                 </label>
                                                 <label className="input-group">
 
-                                                    <input type="text" name="foodid" placeholder="food id " className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
+                                                    <input type="text" name="foodid" placeholder="food id " defaultValue={_id} className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
                                                 </label>
                                             </div>
 
@@ -95,7 +149,7 @@ const SingleFood = () => {
                                                 </label>
                                                 <label className="input-group">
 
-                                                    <input type="text" name="donatoremail" placeholder="donator email"  className=" text-orange-500 input input-bordered w-full lg:text-sm font-bold" />
+                                                    <input type="email" name="donatoremail" placeholder="donator email" defaultValue={donatoremail} className=" text-orange-500 input input-bordered w-full lg:text-sm font-bold" />
                                                 </label>
                                             </div>
 
@@ -108,7 +162,7 @@ const SingleFood = () => {
                                                 </label>
                                                 <label className="input-group">
 
-                                                    <input type="text" name="donatorname" placeholder="donator name" className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
+                                                    <input type="text" defaultValue={donatorname} name="donatorname" placeholder="donator name" className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
                                                 </label>
                                             </div>
 
@@ -132,7 +186,7 @@ const SingleFood = () => {
                                                 </label>
                                                 <label className="input-group">
 
-                                                    <input type="text" name="date" placeholder="request date" className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
+                                                    <input type="date" name="requestdate" placeholder="request date" className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
                                                 </label>
                                             </div>
 
@@ -142,7 +196,7 @@ const SingleFood = () => {
                                                 </label>
                                                 <label className="input-group">
 
-                                                    <input type="text" name="location" placeholder="location"  className=" text-orange-500 input input-bordered w-full lg:text-sm font-bold" />
+                                                    <input type="text" name="location" placeholder="location" defaultValue={location} className=" text-orange-500 input input-bordered w-full lg:text-sm font-bold" />
                                                 </label>
                                             </div>
 
@@ -155,7 +209,7 @@ const SingleFood = () => {
                                                 </label>
                                                 <label className="input-group">
 
-                                                    <input type="text" name="expiredate" placeholder="expire date" className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
+                                                    <input type="date" name="expiredate" placeholder="expire date" defaultValue={date} className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
                                                 </label>
                                             </div>
 
@@ -180,13 +234,13 @@ const SingleFood = () => {
                                                 </label>
                                                 <label className="input-group">
 
-                                                    <input type="text" name="money" placeholder="money" className=" text-orange-500 input input-bordered w-full lg:text-sm font-bold" />
+                                                    <input type="text" name="additionalnotes" placeholder="additional notes" className=" text-orange-500 input input-bordered w-full lg:text-sm font-bold" />
                                                 </label>
                                             </div>
 
                                         </div>
                                         <div className="w-[50%] mx-auto">
-                                            <button className="btn text-white btn-warning  mt-5 ">Request Food</button>
+                                            <button id='gohome-button' className="btn text-white btn-warning  mt-5 ">Request Food</button>
 
                                         </div>
                                         
