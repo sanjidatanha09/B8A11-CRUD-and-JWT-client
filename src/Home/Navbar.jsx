@@ -17,9 +17,22 @@ const Navbar = () => {
         <li><NavLink className='' to="/">Home</NavLink></li>
         <li><NavLink to="/availablfoods">Available Foods</NavLink></li>
         <li><NavLink to="/addfood">Add Food</NavLink></li>
-        <li><NavLink to="/managefood">Manage My Foods</NavLink></li>
-        <li><NavLink to="/foodrequest">My Food Request</NavLink></li>
-        {/* <li><NavLink to="/login">Login</NavLink></li> */}
+
+        {
+            user?.email ? <>
+                <li><NavLink to='/managefood'>Manage My Food</NavLink></li>
+                <li><NavLink to="/foodrequest">My Food Request</NavLink></li>
+
+            </>
+
+                :
+                <li></li>
+        }
+
+
+        {/* <li><NavLink to="/managefood">Manage My Foods</NavLink></li> */}
+
+
 
     </>
 
@@ -39,10 +52,10 @@ const Navbar = () => {
                     <div className='flex justify-between items-center gap-1'>
                         <img className='w-[30px] md:w-[60px] lg:w-[50px]' src="https://i.ibb.co/nM5yjYc/images-q-tbn-ANd9-Gc-QEv-NFq-CIQn-Lr8-F9t-MMQLT8k1a15ozh-Tfr-S6sgw-Y-h-Ndw-s.png" alt="" />
                         <h1 className='md:text-3xl lg:text-2xl font-bold text-gray-700'>Foodie <span className='text-orange-500'>Heaven</span> </h1>
-                       
+
 
                     </div>
-                   
+
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className=" font-bold text-gray-600 menu menu-horizontal px-1 ">
@@ -50,7 +63,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className='navbar-end '>
-                    
+
 
                 </div><div className="navbar-end ">
 
@@ -82,7 +95,7 @@ const Navbar = () => {
 
                 </div>
 
-                
+
             </div>
         </div>
     );

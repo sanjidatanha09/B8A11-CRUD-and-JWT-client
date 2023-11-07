@@ -1,9 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { AuthContext } from '../Providers.jsx/AuthProvider';
 import Swal from 'sweetalert2';
 
 const AddFood = () => {
     const { user } = useContext(AuthContext);
+    useEffect(() => {
+        document.title = "Foodie | Add Food";
+    }, [])
 
     const handleAddFood = event => {
         event.preventDefault();
@@ -11,21 +14,21 @@ const AddFood = () => {
 
         const foodname = form.foodname.value;
         const foodimage = form.foodimage.value;
-        const donatorimage = form.donatorimage.value;
-        const donatorname = form.donatorname.value;
+        const donatorimage = user?.photoURL;
+        const donatorname = user?.displayNameL;
         const foodquantity = form.foodquantity.value;
         const location = form.location.value;
         const date = form.date.value;
         const additionalnotes = form.additionalnotes.value;
         const foodstatus = form.foodstatus.value;
-        const donatoremail = form.donatoremail.value;
+        const email = user?.email;
 
-        const newFood = { foodname, foodimage, donatorimage, donatorname, foodquantity, location, date, additionalnotes, foodstatus, donatoremail }
+        const newFood = { foodname, foodimage, donatorimage, donatorname, foodquantity, location, date, additionalnotes, foodstatus, email }
 
         console.log(newFood);
 
         //send data to the server 
-        fetch('http://localhost:5000/food', {
+        fetch('http://localhost:5000/allfood', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -178,7 +181,7 @@ const AddFood = () => {
                             </label>
                             <label className="input-group">
 
-                                <input type="text" defaultValue={user?.email} name="donatoremail" placeholder="donator email" className="input input-bordered w-full text-orange-500" />
+                                <input type="email" defaultValue={user?.email} name="email" placeholder="donator email" className="input input-bordered w-full text-orange-500" />
                             </label>
                         </div>
                     </div>

@@ -50,7 +50,7 @@ const Registration = () => {
             .then(result => {
                 console.log(result.user);
                 //new user has been created
-                const Name = result.user?.auth?.displayName;
+               
                 const createAt = result.user?.metadata?.creationTime;
 
                 const user = { email, createAt: createAt ,Name:Name};

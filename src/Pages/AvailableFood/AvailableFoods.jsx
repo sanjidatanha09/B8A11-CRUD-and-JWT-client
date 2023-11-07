@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import AvailableFood2 from './AvailableFood2';
 
 const AvailableFoods = () => {
+    
 
     const availableFood = useLoaderData();
     console.log(availableFood)
@@ -23,6 +24,9 @@ const AvailableFoods = () => {
         
 
     };
+    useEffect(() => {
+        document.title = "Foodie | Available Foods";
+    }, [])
 
     return (
         <div>

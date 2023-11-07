@@ -18,6 +18,8 @@ const AvailableFood2 = ({ availableFood }) => {
             
         }
         sortData()
+        
+
     }, [])
   
 

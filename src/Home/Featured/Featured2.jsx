@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Featured2 = ({food}) => {
-    const { foodname, foodimage, foodquantity, location, date, additionalnotes, foodstatus, donatorname, donatorimage, donatoremail } = food;
+    const { _id,foodname, foodimage, foodquantity, location, date, additionalnotes, foodstatus, donatorname, donatorimage, donatoremail } = food;
     return (
         <div>
             <div className="card  bg-base-100 shadow-xl ">
@@ -32,12 +32,12 @@ const Featured2 = ({food}) => {
 
                     </div>
                     
-                    {/* <div className="card-actions justify-end">
+                    <div className="card-actions justify-end">
                         <Link to={`/singlefood/${_id}`}>
                             <button className='btn btn-warning text-white font-bold'>Details</button>
                         </Link>
                        
-                    </div> */}
+                    </div>
                 </div>
             </div>
         </div>

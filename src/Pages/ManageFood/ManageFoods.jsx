@@ -1,76 +1,114 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import DataTable from 'react-data-table-component';
-import { Link, useLoaderData } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../Providers.jsx/AuthProvider';
+import MFoodCard from './MFoodCard';
+import Swal from 'sweetalert2';
 
 const ManageFoods = () => {
+    const { user } = useContext(AuthContext)
+    const [managefoods, setManageFood] = useState([]);
 
-    const [countries, setCountries] = useState([]);
+    const url = `http://localhost:5000/somefood?email=${user?.email}`;
 
-    const getCountries = async () =>{
-        try{
-            const response = await axios.get('http://localhost:5000/allfood');
-            setCountries(response.data);
 
-        }catch(error){
-            console.log(error);
+    useEffect(() => {
+        if (user?.email) {
+            fetch(url)
+                .then(res => res.json())
+                .then(data => setManageFood(data))
+
         }
-    };
 
-    // const handleDelete = 
+        document.title = "Foodie | Manage Food";
 
-    const columns = [
-        {
-            name: 'Donator Name',
-            selector: row => row.donatorname,
-            sortable: true
-        },
-        {
-            name: 'Food Name',
-            selector: row => row.foodname,
-            sortable: true
-        },
-        {
-            name: 'Quantity',
-            selector: row => row.foodquantity,
-            sortable: true
-        },
-        {
-            name: 'Update',
-            selector: row => <button className='btn my-2 text-[12px]'>update</button>,
-            sortable: true
-        },
-        {
-            name: 'Delete',
-            selector: row => <button className='btn my-2 '>X</button>,
-            sortable: true
-        },
-        {
-            name: 'Manage Food',
-            selector: row => <Link to=''><button className='btn my-2 text-[12px]'>Manage Food</button> </Link> ,
-            sortable: true
-        },
+    }, [url])
+
+   
 
 
-    ];
+    const handleDelete = id => {
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                fetch(`http://localhost:5000/allfood/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                            const remaining = managefoods.filter(managefood => managefood._id !== id);
+                            setManageFood(remaining);
+
+                        }
+                    })
 
 
-    useEffect(() =>{
-        getCountries();
 
-    },[]);
+            }
+
+
+        });
+
+
+    }
+
+    
+
+
 
     return (
-        <div className='m-5'>
+        <div>
+            <h2 className='text-5xl'>your foods :{managefoods.length} </h2>
 
-            <DataTable className='p-6'
-                columns={columns}
-                data={countries}
-                selectableRows
-                fixedHeader
-                pagination
-            ></DataTable>
+            <div className="">
+                <table className="table border text-center">
+                    {/* head */}
+                    <thead className='p-10'>
+                        <tr>
+                            <th>
+                                <label>
+                                    <input type="checkbox" className="checkbox" />
+                                </label>
+                            </th>
+                            <th>Donator Name</th>
+                            <th>Food Name</th>
+                           
+                            <th>Quantity</th>
+                            <th>Manage</th>
+                            <th>Delete</th>
+                            <th>Update</th>
+                        </tr>
+                    </thead>
+                    <tbody className=''>
 
+                      {
+                        managefoods.map(managefood =><MFoodCard
+                        key={managefood._id}
+                        managefood={managefood}
+                        handleDelete={handleDelete}
+                       
+                        ></MFoodCard>)
+                      }
+
+                    </tbody>
+
+
+                </table>
+            </div>
         </div>
     );
 };

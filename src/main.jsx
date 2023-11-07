@@ -14,9 +14,13 @@ import Registration from './Login/Registration'
 import AuthProvider from './Providers.jsx/AuthProvider';
 import AvailableFoods from './Pages/AvailableFood/AvailableFoods';
 import AddFood from './Pages/AddFood';
-import FoodRequest from './Pages/FoodRequest';
+import FoodRequest from './Pages/FoodRequest/FoodRequest';
 import SingleFood from './Pages/AvailableFood/4-AvailabFood/SingleFood';
+import ManageButton from './Pages/ManageFood/ManageButton/ManageButton';
 import ManageFoods from './Pages/ManageFood/ManageFoods';
+import Button from './Pages/ManageFood/Button/Button';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
+
 
 
 
@@ -45,17 +49,33 @@ const router = createBrowserRouter([
       },
       {
         path: '/addfood',
-        element: <AddFood></AddFood>,
+        element: <PrivateRoute><AddFood></AddFood></PrivateRoute>,
       },
       {
         path: '/managefood',
         element:<ManageFoods></ManageFoods>,
-        loader: () => fetch('http://localhost:5000/allfood'),
+      
+      },
+    
+      
+      {
+        path: '/managebutton/:id',
+        element: <PrivateRoute><ManageButton></ManageButton></PrivateRoute>,
+        loader: ({ params }) => fetch(`http://localhost:5000/onefood/${params.id}`)
+       
+      },
+      {
+        path: '/button/:id',
+        element: <Button></Button>,
+        loader: () => fetch('http://localhost:5000/requestfood'),
+       
+
       },
 
       {
         path: '/foodrequest',
-        element: <FoodRequest></FoodRequest>,
+        element: <PrivateRoute><FoodRequest></FoodRequest></PrivateRoute>,
+        loader: () => fetch('http://localhost:5000/requestfood'),
       }, 
       {
         path: '/login',

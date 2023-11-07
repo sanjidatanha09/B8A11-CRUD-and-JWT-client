@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../Providers.jsx/AuthProvider";
 import Swal from "sweetalert2";
@@ -6,15 +6,14 @@ import Swal from "sweetalert2";
 
 const SingleFood = () => {
     const { user } = useContext(AuthContext);
-    // function goHome() {
-    //     window.location.reload();
-    // }
-    // document.getElementById('gohome-button').addEventListener('click', goHome);
 
+    useEffect(() => {
+        document.title = `Foodie | ${foodname}`;
+    }, [])
     
     const fansi =useLoaderData();
     console.log(fansi)
-    const { _id,foodname, foodimage, foodquantity, location, date, additionalnotes, foodstatus, donatorname, donatorimage, donatoremail } = fansi;
+    const { _id,foodname, foodimage, foodquantity, location, date, additionalnotes, foodstatus, donatorname, donatorimage, email } = fansi;
 
     const handleAddFood = event => {
         event.preventDefault();
@@ -25,17 +24,20 @@ const SingleFood = () => {
         const foodid = form.foodid.value;
         const donatoremail = form.donatoremail.value;
         const donatorname = form.donatorname.value;
-        const useremail = form.useremail.value;
+        const email = user?.email;
         const requestdate = form.requestdate.value;
         const location = form.location.value;
         const expiredate = form.expiredate.value;
         const money = form.money.value;
+        const foodstatus = form.foodstatus.value;
         const additionalnotes = form.additionalnotes.value;
+        const username = user?.displayName;
+        const userimage = user?.photoURL;
        
         
        
 
-        const requestFood = { foodname, foodimage, foodid, useremail, requestdate, donatoremail, donatorname, useremail, location, expiredate, additionalnotes, money, donatoremail }
+        const requestFood = { foodname, foodimage, foodid, email, requestdate, donatoremail, donatorname, location, expiredate, additionalnotes, money, username, userimage, foodstatus }
 
         console.log(requestFood);
 
@@ -149,7 +151,7 @@ const SingleFood = () => {
                                                 </label>
                                                 <label className="input-group">
 
-                                                    <input type="email" name="donatoremail" placeholder="donator email" defaultValue={donatoremail} className=" text-orange-500 input input-bordered w-full lg:text-sm font-bold" />
+                                                    <input type="email" name="donatoremail" placeholder="donator email" defaultValue={email} className=" text-orange-500 input input-bordered w-full lg:text-sm font-bold" />
                                                 </label>
                                             </div>
 
@@ -172,7 +174,7 @@ const SingleFood = () => {
                                                 </label>
                                                 <label className="input-group">
 
-                                                    <input type="text" name="useremail" placeholder="user email" defaultValue={user?.email} className=" text-orange-500 input input-bordered w-full lg:text-sm font-bold" />
+                                                    <input type="email" name="email" placeholder="user email" defaultValue={user?.email} className=" text-orange-500 input input-bordered w-full lg:text-sm font-bold" />
                                                 </label>
                                             </div>
 
@@ -226,9 +228,41 @@ const SingleFood = () => {
                                         </div>
                                         <div className='md:flex lg:flex justify-between items-center gap-6 '>
 
-                                            
+                                            <div className="form-control md:w-3/6 lg:w-3/6">
+                                                <label className="label">
+                                                    <span className="label-text text-orange-700 font-bold lg:text-lg">user Image</span>
+                                                </label>
+                                                <label className="input-group">
 
-                                            <div className="form-control md:w-3/6 lg:w-3/4">
+                                                    <input type="text" name="userimage" placeholder="user image" defaultValue={user?.photoURL} className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
+                                                </label>
+                                            </div>
+
+                                            <div className="form-control md:w-3/6 lg:w-3/6">
+                                                <label className="label">
+                                                    <span className="label-text text-orange-700 font-bold lg:text-lg">User Name</span>
+                                                </label>
+                                                <label className="input-group">
+
+                                                    <input type="text" name="username" defaultValue={user?.displayName} placeholder="user name" className=" text-orange-500 input input-bordered w-full lg:text-sm font-bold" />
+                                                </label>
+                                            </div>
+
+                                        </div>
+
+                                        <div className='md:flex lg:flex justify-between items-center gap-6 '>
+
+                                            <div className="form-control md:w-3/6 lg:w-3/6">
+                                                <label className="label">
+                                                    <span className="label-text text-orange-700 font-bold lg:text-lg">Status</span>
+                                                </label>
+                                                <label className="input-group">
+
+                                                    <input type="text" name="foodstatus" placeholder="expire date" defaultValue={foodstatus} className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
+                                                </label>
+                                            </div>
+
+                                            <div className="form-control md:w-3/6 lg:w-3/6">
                                                 <label className="label">
                                                     <span className="label-text text-orange-700 font-bold lg:text-lg">Additional Notes</span>
                                                 </label>
@@ -239,6 +273,9 @@ const SingleFood = () => {
                                             </div>
 
                                         </div>
+                                        
+
+                                        
                                         <div className="w-[50%] mx-auto">
                                             <button id='gohome-button' className="btn text-white btn-warning  mt-5 ">Request Food</button>
 

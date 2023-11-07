@@ -23,7 +23,7 @@ const Login = () => {
         });
     };
 
-
+  
 
     const handleLogin = e =>{
         e.preventDefault();
@@ -35,12 +35,13 @@ const Login = () => {
 
         signIn(email,password)
             .then(result =>{
-                console.log(result.user)
+                const user = result.user
+                console.log(user)
                 
                 toast('user created successfully');
                 //navigate after login
 
-                navigate(location?.state ? location.state : '/')
+                navigate(location?.state ? location?.state : '/')
             })
             .catch(error =>{
                 console.error(error);

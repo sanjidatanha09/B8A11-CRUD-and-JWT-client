@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const AvailableFoodCard = ({ food}) => {
     
     const {_id, foodname, foodimage, foodquantity, location, date, additionalnotes, foodstatus, donatorname, donatorimage, donatoremail } =food;
+
+  
 
   
 
@@ -43,12 +45,7 @@ const AvailableFoodCard = ({ food}) => {
 
                     </div>
 
-                    {/* <div className="card-actions border w-full mt-5">
-
-                        <button className='btn w-full btn-warning text-white font-bold'>View Details</button>
-
-
-                    </div> */}
+                  
                 </div>
             </div>
         </div>
