@@ -28,7 +28,7 @@ const MFoodCard = ({ managefood, handleDelete }) => {
 
                 </Link>             
             </td>
-            <td> <button onClick={() => handleDelete(_id)}>X</button></td>
+            <td> <button className='btn' onClick={() => handleDelete(_id)}>X</button></td>
 
 
             <td>

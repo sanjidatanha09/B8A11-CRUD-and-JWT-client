@@ -55,7 +55,7 @@ const AvailableFoods = () => {
                 </div>
 
             </div> 
-            length:{availableFood.length}
+            
 
             <AvailableFood2 availableFood={fullCampaignes}></AvailableFood2>
             

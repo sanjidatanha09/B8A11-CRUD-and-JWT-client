@@ -39,8 +39,8 @@ const Button = () => {
         <div>
            <h1>{requestfoods.length}</h1>
 
-            <div className="">
-                <table className="table border text-center">
+            <div className="overflow-x-auto mt-10">
+                <table className="text-center table table-xs table-pin-rows table-pin-cols">
                     {/* head */}
                     <thead className='p-10'>
                         <tr>

@@ -20,7 +20,7 @@ const Featured2 = ({food}) => {
                     </div>
                     
                     
-                    <p className='text-gray-500 text-base'>{additionalnotes}</p>
+                    <p className='text-gray-500 text-base h-[130px]'>{additionalnotes}</p>
                     <div className='flex justify-between items-center'>
                         <div className='flex justify-center items-center gap-2'>
                             <img className='w-[40px] h-[40px] rounded-full' src={donatorimage} alt="" />

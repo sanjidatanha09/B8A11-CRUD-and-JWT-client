@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../Providers.jsx/AuthProvider";
 import Swal from "sweetalert2";
@@ -6,13 +6,26 @@ import Swal from "sweetalert2";
 
 const SingleFood = () => {
     const { user } = useContext(AuthContext);
+    const [time, setTime] = useState(new Date())
+    const [currentDate, setCurrentDate] = useState(new Date().toLocaleDateString());
+    console.log(currentDate)
+
+
+    // useEffect(() => {
+    //     setInterval(() => setTime(new Date()), 1000)
+    // }, [])
+    
+    const handleDateChange = (event) => {
+        setCurrentDate(event.target.value);
+    };
+    
 
     useEffect(() => {
         document.title = `Foodie | ${foodname}`;
     }, [])
     
     const fansi =useLoaderData();
-    console.log(fansi)
+    // console.log(fansi)
     const { _id,foodname, foodimage, foodquantity, location, date, additionalnotes, foodstatus, donatorname, donatorimage, email } = fansi;
 
     const handleAddFood = event => {
@@ -47,7 +60,7 @@ const SingleFood = () => {
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(requestFood)
+            body: JSON.stringify(requestFood ,{date:currentDate})
         })
             .then(res => res.json())
             .then(data => {
@@ -70,8 +83,10 @@ const SingleFood = () => {
         <div>
             <div className="text-center mt-10 font-bold md:text-xl lg:text-3xl text-gray-600">
 
-                <h2>Donar Name : {foodname}</h2>
+                <h2>Food Name : {foodname}</h2>
                 <h2>Location  :{location}</h2>
+               
+               
 
             </div>
 
@@ -112,13 +127,13 @@ const SingleFood = () => {
 
                                         <div className='md:flex lg:flex justify-between items-center gap-6 '>
 
-                                            <div className="form-control md:w-3/6 lg:w-3/6">
+                                            <div className="form-control  md:w-3/6 lg:w-3/6">
                                                 <label className="label">
                                                     <span className="label-text text-orange-700 font-bold lg:text-lg">Food Name</span>
                                                 </label>
                                                 <label className="input-group">
 
-                                                    <input type="text" name="foodname" placeholder="foodname " defaultValue={foodname} className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
+                                                    <input type="text" disabled name="foodname" placeholder="foodname " defaultValue={foodname} className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
                                                 </label>
                                             </div>
 
@@ -128,7 +143,7 @@ const SingleFood = () => {
                                                 </label>
                                                 <label className="input-group">
 
-                                                    <input type="text" name="foodimage" placeholder="food image" defaultValue={foodimage} className=" text-orange-500 input input-bordered w-full lg:text-sm font-bold" />
+                                                    <input type="text" disabled name="foodimage" placeholder="food image" defaultValue={foodimage} className=" text-orange-500 input input-bordered w-full lg:text-sm font-bold" />
                                                 </label>
                                             </div>
 
@@ -141,7 +156,7 @@ const SingleFood = () => {
                                                 </label>
                                                 <label className="input-group">
 
-                                                    <input type="text" name="foodid" placeholder="food id " defaultValue={_id} className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
+                                                    <input type="text" disabled name="foodid" placeholder="food id " defaultValue={_id} className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
                                                 </label>
                                             </div>
 
@@ -151,7 +166,7 @@ const SingleFood = () => {
                                                 </label>
                                                 <label className="input-group">
 
-                                                    <input type="email" name="donatoremail" placeholder="donator email" defaultValue={email} className=" text-orange-500 input input-bordered w-full lg:text-sm font-bold" />
+                                                    <input type="email" name="donatoremail" disabled placeholder="donator email" defaultValue={email} className=" text-orange-500 input input-bordered w-full lg:text-sm font-bold" />
                                                 </label>
                                             </div>
 
@@ -164,7 +179,7 @@ const SingleFood = () => {
                                                 </label>
                                                 <label className="input-group">
 
-                                                    <input type="text" defaultValue={donatorname} name="donatorname" placeholder="donator name" className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
+                                                    <input type="text" disabled defaultValue={donatorname} name="donatorname" placeholder="donator name" className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
                                                 </label>
                                             </div>
 
@@ -174,7 +189,7 @@ const SingleFood = () => {
                                                 </label>
                                                 <label className="input-group">
 
-                                                    <input type="email" name="email" placeholder="user email" defaultValue={user?.email} className=" text-orange-500 input input-bordered w-full lg:text-sm font-bold" />
+                                                    <input type="email" disabled name="email" placeholder="user email" defaultValue={user?.email} className=" text-orange-500 input input-bordered w-full lg:text-sm font-bold" />
                                                 </label>
                                             </div>
 
@@ -188,7 +203,7 @@ const SingleFood = () => {
                                                 </label>
                                                 <label className="input-group">
 
-                                                    <input type="date" name="requestdate" placeholder="request date" className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
+                                                    <input type="text" disabled defaultValue={currentDate} onChange={handleDateChange}   name="requestdate" placeholder="request date" className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
                                                 </label>
                                             </div>
 
@@ -198,7 +213,7 @@ const SingleFood = () => {
                                                 </label>
                                                 <label className="input-group">
 
-                                                    <input type="text" name="location" placeholder="location" defaultValue={location} className=" text-orange-500 input input-bordered w-full lg:text-sm font-bold" />
+                                                    <input type="text" disabled name="location" placeholder="location" defaultValue={location} className=" text-orange-500 input input-bordered w-full lg:text-sm font-bold" />
                                                 </label>
                                             </div>
 
@@ -211,7 +226,7 @@ const SingleFood = () => {
                                                 </label>
                                                 <label className="input-group">
 
-                                                    <input type="date" name="expiredate" placeholder="expire date" defaultValue={date} className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
+                                                    <input type="date" disabled name="expiredate" placeholder="expire date" defaultValue={date} className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
                                                 </label>
                                             </div>
 
@@ -234,7 +249,7 @@ const SingleFood = () => {
                                                 </label>
                                                 <label className="input-group">
 
-                                                    <input type="text" name="userimage" placeholder="user image" defaultValue={user?.photoURL} className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
+                                                    <input type="text" disabled name="userimage" placeholder="user image" defaultValue={user?.photoURL} className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
                                                 </label>
                                             </div>
 
@@ -244,7 +259,7 @@ const SingleFood = () => {
                                                 </label>
                                                 <label className="input-group">
 
-                                                    <input type="text" name="username" defaultValue={user?.displayName} placeholder="user name" className=" text-orange-500 input input-bordered w-full lg:text-sm font-bold" />
+                                                    <input type="text" name="username" disabled defaultValue={user?.displayName} placeholder="user name" className=" text-orange-500 input input-bordered w-full lg:text-sm font-bold" />
                                                 </label>
                                             </div>
 
@@ -258,7 +273,7 @@ const SingleFood = () => {
                                                 </label>
                                                 <label className="input-group">
 
-                                                    <input type="text" name="foodstatus" placeholder="expire date" defaultValue={foodstatus} className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
+                                                    <input type="text" disabled name="foodstatus" placeholder="expire date" defaultValue={foodstatus} className="input input-bordered w-full text-orange-500 font-bold lg:text-sm" />
                                                 </label>
                                             </div>
 

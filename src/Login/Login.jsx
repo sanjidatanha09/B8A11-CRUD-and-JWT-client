@@ -48,7 +48,7 @@ const Login = () => {
                 
                 
 
-                // navigate(location?.state ? location?.state : '/')
+               
 
                 //get access token
                 axios.post('http://localhost:5000/jwt',user,{withCredentials:true})

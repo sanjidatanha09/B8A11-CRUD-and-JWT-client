@@ -108,7 +108,7 @@ const AddFood = () => {
                             </label>
                             <label className="input-group">
 
-                                <input type="text" name="donatorimage" defaultValue={user?.photoURL}  placeholder="donator image " className="input input-bordered w-full text-orange-500 font-bold lg:text-xl" />
+                                <input type="text" disabled name="donatorimage" defaultValue={user?.photoURL}  placeholder="donator image " className="input input-bordered w-full text-orange-500 font-bold lg:text-xl" />
                             </label>
                         </div>
 
@@ -118,7 +118,7 @@ const AddFood = () => {
                             </label>
                             <label className="input-group">
 
-                                <input type="text" defaultValue={user?.displayName} name="donatorname" placeholder="donator name" className="input text-orange-500 input-bordered w-full" />
+                                <input type="text" disabled defaultValue={user?.displayName} name="donatorname" placeholder="donator name" className="input text-orange-500 input-bordered w-full" />
                             </label>
                         </div>
 
@@ -181,7 +181,7 @@ const AddFood = () => {
                             </label>
                             <label className="input-group">
 
-                                <input type="email" defaultValue={user?.email} name="email" placeholder="donator email" className="input input-bordered w-full text-orange-500" />
+                                <input type="email" disabled defaultValue={user?.email} name="email" placeholder="donator email" className="input input-bordered w-full text-orange-500" />
                             </label>
                         </div>
                     </div>

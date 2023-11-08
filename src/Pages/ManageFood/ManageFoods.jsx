@@ -14,7 +14,7 @@ const ManageFoods = () => {
     useEffect(() => {
         if (user?.email) {
 
-            axios.get(url)
+            axios.get(url, {withCredentials: true})
             .then(res =>{
                 setManageFood(res.data)
             })
@@ -73,18 +73,21 @@ const ManageFoods = () => {
     }
 
     
-
+    //overflow-x-auto
+    //mt-10 w-[400px] md:w-full lg:w-full
 
 
     return (
         <div>
-            <h2 className='text-5xl'>your foods :{managefoods.length} </h2>
 
-            <div className="">
-                <table className="table border text-center">
+          
+            
+
+            <div className="overflow-x-auto mt-10">
+                <table className=" table table-xs table-pin-rows table-pin-cols">
                     {/* head */}
-                    <thead className='p-10'>
-                        <tr>
+                    <thead className='lg:p-10'>
+                        <tr className='lg:text-xl'>
                             <th>
                                 <label>
                                     <input type="checkbox" className="checkbox" />
@@ -94,7 +97,7 @@ const ManageFoods = () => {
                             <th>Food Name</th>
                            
                             <th>Quantity</th>
-                            <th>Manage</th>
+                            <th>Manage Food </th>
                             <th>Delete</th>
                             <th>Update</th>
                         </tr>

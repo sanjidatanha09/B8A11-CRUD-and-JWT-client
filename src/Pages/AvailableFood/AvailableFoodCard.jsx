@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Providers.jsx/AuthProvider';
 
 const AvailableFoodCard = ({ food}) => {
-    
+
+    const { user } = useContext(AuthContext)
     const {_id, foodname, foodimage, foodquantity, location, date, additionalnotes, foodstatus, donatorname, donatorimage, donatoremail } =food;
 
   

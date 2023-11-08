@@ -11,7 +11,7 @@ const ManageButton = () => {
         document.title = "Foodie | Food Update";
     }, [])
 
-    const { _id, foodname, foodimage, foodquantity, location, date, additionalnotes, foodstatus, donatorname, donatorimage, email } = foodupdate;
+    const { _id, foodname, foodimage, foodquantity, location, date, additionalnotes, foodstatus } = foodupdate;
 
     const handleUpdateFood = event => {
         event.preventDefault();
@@ -19,16 +19,16 @@ const ManageButton = () => {
 
         const foodname = form.foodname.value;
         const foodimage = form.foodimage.value;
-        const donatorimage = form.donatorimage.value;
-        const donatorname = form.donatorname.value;
+        // const donatorimage = user?.photoURL;
+        // const donatorname = user?.displayName;
         const foodquantity = form.foodquantity.value;
         const location = form.location.value;
         const date = form.date.value;
         const additionalnotes = form.additionalnotes.value;
         const foodstatus = form.foodstatus.value;
-        const email = user?.email;
+        // const email = user?.email;
 
-        const updatedFood = { foodname, foodimage, donatorimage, donatorname, foodquantity, location, date, additionalnotes, foodstatus, email }
+        const updatedFood = { foodname, foodimage, foodquantity, location, date, additionalnotes, foodstatus }
 
         console.log(updatedFood);
 
@@ -95,7 +95,7 @@ const ManageButton = () => {
 
                         </div>
 
-                        <div className='md:flex lg:flex justify-between items-center gap-6 '>
+                        {/* <div className='md:flex lg:flex justify-between items-center gap-6 '>
 
                             <div className="form-control md:w-3/6 lg:w-3/6">
                                 <label className="label">
@@ -117,7 +117,7 @@ const ManageButton = () => {
                                 </label>
                             </div>
 
-                        </div>
+                        </div> */}
 
                         <div className='md:flex lg:flex justify-between items-center gap-6'>
                             <div className="form-control md:w-3/6 lg:w-3/6">
@@ -170,7 +170,7 @@ const ManageButton = () => {
                                     <input type="text" defaultValue={foodstatus} name="foodstatus" placeholder="food status"  className="input text-orange-500 input-bordered w-full" />
                                 </label>
                             </div>
-                            <div className="form-control md:w-3/6 lg:w-3/6">
+                            {/* <div className="form-control md:w-3/6 lg:w-3/6">
                                 <label className="label">
                                     <span className="label-text text-orange-700 font-bold lg:text-xl">Donator Email</span>
                                 </label>
@@ -178,7 +178,7 @@ const ManageButton = () => {
 
                                     <input type="email"  defaultValue={user?.email} name="email" placeholder="donator email" className="input input-bordered w-full text-orange-500" />
                                 </label>
-                            </div>
+                            </div> */}
                         </div>
 
 

@@ -1,15 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import FoodRequCard from './FoodRequCard';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../Providers.jsx/AuthProvider';
+import axios from 'axios';
 
 const FoodRequest = () => {
-    const requfood = useLoaderData();
-    const [requestfoods, setRequFoods] = useState(requfood)
+    const { user } = useContext(AuthContext)
+    const [requestfoods, setRequFoods] = useState([]);
+
+    const url = `http://localhost:5000/foodrequest?email=${user?.email}`; 
+
+   
 
     useEffect(() => {
+        // if (user?.email) {
+
+            axios.get(url, { withCredentials: true })
+                .then(res => {
+                    setRequFoods(res.data)
+                })
+            // fetch(url)
+            //     .then(res => res.json())
+            //     .then(data => setManageFood(data))
+
+        // }
+
         document.title = "Foodie | Food Request";
-    }, [])
+
+    }, [url])
 
 
     const handleDelete = id => {
