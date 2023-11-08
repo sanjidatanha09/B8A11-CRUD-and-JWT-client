@@ -14,8 +14,11 @@ const Login = () => {
     const { googleSignIn } =useContext(AuthContext)
     const { signIn } =useContext(AuthContext);
     const location = useLocation();
-    const navigate = useNavigate()
-    console.log('location login page',location)
+    console.log('location login page', location)
+
+    const navigate = useNavigate();
+    
+   
 
     const handleGoogle = () => {
         googleSignIn().then(result => {
@@ -41,7 +44,11 @@ const Login = () => {
                 toast('user created successfully');
                 //navigate after login
 
-                navigate(location?.state ? location?.state : '/')
+                // navigate(location?.state ? location?.state : '/')
+
+                //get access token
+
+                
             })
             .catch(error =>{
                 console.error(error);

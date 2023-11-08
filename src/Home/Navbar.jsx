@@ -69,6 +69,18 @@ const Navbar = () => {
 
                     <div className='flex justify-end items-center gap-5'>
 
+                        <div className='hidden lg:flex '>
+                           
+                               
+                                <img className='rounded-full ' src={user?.photoURL} alt="" />
+                                
+
+                         
+                         
+
+
+                        </div>
+
 
                         {
                             user ?
@@ -81,11 +93,7 @@ const Navbar = () => {
                                 </Link>
 
                         }
-                        {/* <div>
-                            <p className='text-sm font-bold'>{user?.email}</p>
-
-
-                        </div> */}
+                       
 
 
                     </div>

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -12,6 +12,11 @@ const Registration = () => {
     const [showpassword , setShowpassword] =useState(false);
    
     const { createUser }= useContext(AuthContext)
+
+    const location = useLocation();
+    console.log('location login page', location)
+
+    const navigate = useNavigate();
 
 
     const handleRegistration = e => {
@@ -53,7 +58,8 @@ const Registration = () => {
                
                 const createAt = result.user?.metadata?.creationTime;
 
-                const user = { email, createAt: createAt ,Name:Name};
+                const user = { email, createAt: createAt};
+                navigate(location?.state ? location?.state : '/')
                 
                 fetch('http://localhost:5000/user', {
                     method: 'POST',
