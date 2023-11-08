@@ -7,6 +7,7 @@ import { FaBeer, FaRegEyeSlash, FaEye } from 'react-icons/fa';
 import { AuthContext } from '../Providers.jsx/AuthProvider';
 import Lottie from 'lottie-react';
 import loginanimation from '../../public/login.json'
+import axios from 'axios';
 
 const Login = () => {
     const [showpassword, setShowpassword] = useState(false);
@@ -14,7 +15,7 @@ const Login = () => {
     const { googleSignIn } =useContext(AuthContext)
     const { signIn } =useContext(AuthContext);
     const location = useLocation();
-    console.log('location login page', location)
+    // console.log('location login page', location)
 
     const navigate = useNavigate();
     
@@ -23,6 +24,7 @@ const Login = () => {
     const handleGoogle = () => {
         googleSignIn().then(result => {
             console.log(result.user)
+            toast('user login successfully');
         });
     };
 
@@ -30,23 +32,33 @@ const Login = () => {
 
     const handleLogin = e =>{
         e.preventDefault();
-        console.log(e.currentTarget);
+        // console.log(e.currentTarget);
         const form = new FormData(e.currentTarget);
         const email = form.get('email')
         const password = form.get('password')
-        console.log( email, password);
+        // console.log( email, password);
 
         signIn(email,password)
             .then(result =>{
-                const user = result.user
-                console.log(user)
+                toast('user login successfully');
+                const loggedInUser = result.user
+                console.log(loggedInUser);
+                const user = {email};
                 
-                toast('user created successfully');
-                //navigate after login
+                
+                
 
                 // navigate(location?.state ? location?.state : '/')
 
                 //get access token
+                axios.post('http://localhost:5000/jwt',user,{withCredentials:true})
+                .then(res =>{
+                    console.log(res.data)
+                    if(res.data.success){
+                        //navigate after login
+                        navigate(location?.state ? location?.state : '/')
+                    }
+                })
 
                 
             })

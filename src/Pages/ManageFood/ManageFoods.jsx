@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Providers.jsx/AuthProvider';
 import MFoodCard from './MFoodCard';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const ManageFoods = () => {
     const { user } = useContext(AuthContext)
@@ -12,9 +13,14 @@ const ManageFoods = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(url)
-                .then(res => res.json())
-                .then(data => setManageFood(data))
+
+            axios.get(url)
+            .then(res =>{
+                setManageFood(res.data)
+            })
+            // fetch(url)
+            //     .then(res => res.json())
+            //     .then(data => setManageFood(data))
 
         }
 

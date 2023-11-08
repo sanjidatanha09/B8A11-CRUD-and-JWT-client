@@ -72,7 +72,7 @@ const Navbar = () => {
                         <div className='hidden lg:flex '>
                            
                                
-                                <img className='rounded-full ' src={user?.photoURL} alt="" />
+                                <img className='rounded-full lg:w-[50px] ' src={user?.photoURL} alt="" />
                                 
 
                          
