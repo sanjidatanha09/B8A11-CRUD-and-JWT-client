@@ -27,7 +27,7 @@ const ManageFoods = () => {
         document.title = "Foodie | Manage Food";
 
     }, [url])
-
+    console.log(managefoods)
    
 
 
