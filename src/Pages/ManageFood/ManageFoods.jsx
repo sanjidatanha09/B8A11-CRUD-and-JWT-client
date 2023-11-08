@@ -8,7 +8,7 @@ const ManageFoods = () => {
     const { user } = useContext(AuthContext)
     const [managefoods, setManageFood] = useState([]);
 
-    const url = `http://localhost:5000/somefood?email=${user?.email}`;
+    const url = `https://assignment-11-server-smoky-mu.vercel.app/somefood?email=${user?.email}`;
 
 
     useEffect(() => {
@@ -44,7 +44,7 @@ const ManageFoods = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/allfood/${id}`, {
+                fetch(`https://assignment-11-server-smoky-mu.vercel.app/allfood/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

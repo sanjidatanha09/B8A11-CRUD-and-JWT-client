@@ -39,13 +39,13 @@ const router = createBrowserRouter([
       {
         path: '/singlefood/:id',
         element: <PrivateRoute> <SingleFood></SingleFood></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/onefood/${params.id}`)
+        loader: ({ params }) => fetch(`https://assignment-11-server-smoky-mu.vercel.app/onefood/${params.id}`)
       
       }, 
       {
         path: '/availablfoods',
         element: <AvailableFoods></AvailableFoods>,
-        loader: () => fetch('http://localhost:5000/allfood'),
+        loader: () => fetch('https://assignment-11-server-smoky-mu.vercel.app/allfood'),
       },
       {
         path: '/addfood',
@@ -61,13 +61,13 @@ const router = createBrowserRouter([
       {
         path: '/managebutton/:id',
         element: <PrivateRoute><ManageButton></ManageButton></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/onefood/${params.id}`)
+        loader: ({ params }) => fetch(`https://assignment-11-server-smoky-mu.vercel.app/onefood/${params.id}`)
        
       },
       {
         path: '/button/:id',
         element: <Button></Button>,
-        loader: () => fetch('http://localhost:5000/requestfood'),
+        loader: () => fetch('https://assignment-11-server-smoky-mu.vercel.app/requestfood'),
        
 
       },
@@ -75,7 +75,7 @@ const router = createBrowserRouter([
       {
         path: '/foodrequest',
         element: <PrivateRoute><FoodRequest></FoodRequest></PrivateRoute>,
-        // loader: () => fetch('http://localhost:5000/requestfood'),
+        // loader: () => fetch('https://assignment-11-server-smoky-mu.vercel.app/requestfood'),
       }, 
       {
         path: '/login',

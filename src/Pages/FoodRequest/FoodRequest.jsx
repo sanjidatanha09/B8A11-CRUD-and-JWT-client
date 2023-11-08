@@ -9,7 +9,7 @@ const FoodRequest = () => {
     const { user } = useContext(AuthContext)
     const [requestfoods, setRequFoods] = useState([]);
 
-    const url = `http://localhost:5000/foodrequest?email=${user?.email}`; 
+    const url = `https://assignment-11-server-smoky-mu.vercel.app/foodrequest?email=${user?.email}`; 
 
    
 
@@ -44,7 +44,7 @@ const FoodRequest = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/requfood/${id}`, {
+                fetch(`https://assignment-11-server-smoky-mu.vercel.app/requfood/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

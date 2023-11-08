@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Featured2 = ({food}) => {
     const { _id,foodname, foodimage, foodquantity, location, date, additionalnotes, foodstatus, donatorname, donatorimage, donatoremail } = food;
+   
     return (
         <div>
             <div className="card  bg-base-100 shadow-xl ">

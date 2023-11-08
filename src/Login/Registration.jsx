@@ -61,7 +61,7 @@ const Registration = () => {
                 const user = { email, createAt: createAt};
                 navigate(location?.state ? location?.state : '/')
                 
-                fetch('http://localhost:5000/user', {
+                fetch('https://assignment-11-server-smoky-mu.vercel.app/user', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

@@ -9,7 +9,7 @@ const Button = () => {
     const [requestfoods, setRequestFood] = useState(buttonupdate);
     
     const handleConfirm = id =>{
-        fetch(`http://localhost:5000/requfood/${id}`,{
+        fetch(`https://assignment-11-server-smoky-mu.vercel.app/requfood/${id}`,{
             method: 'PATCH',
             headers :{
                 'content-type':'application/json'

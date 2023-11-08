@@ -15,7 +15,7 @@ const AddFood = () => {
         const foodname = form.foodname.value;
         const foodimage = form.foodimage.value;
         const donatorimage = user?.photoURL;
-        const donatorname = user?.displayNameL;
+        const donatorname = user?.displayName;
         const foodquantity = form.foodquantity.value;
         const location = form.location.value;
         const date = form.date.value;
@@ -28,7 +28,7 @@ const AddFood = () => {
         console.log(newFood);
 
         //send data to the server 
-        fetch('http://localhost:5000/allfood', {
+        fetch('https://assignment-11-server-smoky-mu.vercel.app/allfood', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -107,6 +107,7 @@ const AddFood = () => {
                                 <span className="label-text text-orange-700 font-bold lg:text-xl">Donator Image</span>
                             </label>
                             <label className="input-group">
+                                
 
                                 <input type="text" disabled name="donatorimage" defaultValue={user?.photoURL}  placeholder="donator image " className="input input-bordered w-full text-orange-500 font-bold lg:text-xl" />
                             </label>

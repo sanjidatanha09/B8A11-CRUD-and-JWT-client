@@ -55,7 +55,7 @@ const SingleFood = () => {
         console.log(requestFood);
 
         //send data to the server 
-        fetch('http://localhost:5000/requestfood', {
+        fetch('https://assignment-11-server-smoky-mu.vercel.app/requestfood', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

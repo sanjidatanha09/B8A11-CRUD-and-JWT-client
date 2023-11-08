@@ -14,7 +14,7 @@ const Featured = () => {
         const fetchData = () => {
 
 
-            fetch('http://localhost:5000/allfood')
+            fetch('https://assignment-11-server-smoky-mu.vercel.app/allfood')
                 .then(res => res.json())
                 .then(json => {
                     const result = json.sort((a,b) =>b.foodquantity - a.foodquantity)

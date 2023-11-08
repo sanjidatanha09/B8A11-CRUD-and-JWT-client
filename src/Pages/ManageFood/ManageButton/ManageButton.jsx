@@ -33,7 +33,7 @@ const ManageButton = () => {
         console.log(updatedFood);
 
         //send data to the server 
-        fetch(`http://localhost:5000/onefood/${_id}`, {
+        fetch(`https://assignment-11-server-smoky-mu.vercel.app/onefood/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
