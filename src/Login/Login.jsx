@@ -47,11 +47,6 @@ const Login = () => {
                 const loggedInUser = result.user
                 console.log(loggedInUser);
                 const user = {email};
-                
-                
-                
-
-               
 
                 //get access token
                 axios.post('https://assignment-11-server-smoky-mu.vercel.app/jwt',user,{withCredentials:true})
@@ -61,16 +56,12 @@ const Login = () => {
                         //navigate after login
                         navigate(location?.state ? location?.state : '/')
                     }
-                })
-
-                
+                })                
             })
             .catch(error =>{
                 console.error(error);
                 toast(error.message);
             })
-        
-
     }
     return (
        <div>

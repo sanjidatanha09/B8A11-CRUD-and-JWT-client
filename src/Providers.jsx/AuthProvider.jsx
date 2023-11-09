@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut,updateProfile } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import app from "../firebase.config";
+import axios from 'axios';
 
 const auth = getAuth(app);
 
@@ -22,9 +23,9 @@ const AuthProvider = ({ children }) => {
     }
 
     //regi login
-    const createUser = (email, password,displayName,photoURL) => {
+    const createUser = (email, password, displayName, photoURL) => {
         setLoading(true);
-        return createUserWithEmailAndPassword(auth, email, password,displayName,photoURL)
+        return createUserWithEmailAndPassword(auth, email, password, displayName, photoURL)
     }
 
     //user login
@@ -41,11 +42,33 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
-
+            const userEmail = currentUser?.email || user?.email;
+            const loggedUser = { email: userEmail };
             console.log('user in the auth state changed', currentUser);
             setUser(currentUser);
             setLoading(false);
-        })
+            //if user exists then issue a token
+            if (currentUser) {
+
+                axios.post('https://assignment-11-server-smoky-mu.vercel.app/jwt', loggedUser, {
+                    withCredentials: true
+                })
+                    .then(res => {
+                        console.log('token res', res.data);
+                    })
+
+            }
+
+            else if(!currentUser) {
+                axios.post('https://assignment-11-server-smoky-mu.vercel.app/logout', loggedUser, {
+                    withCredentials: true
+                })
+                    .then(res => {
+                        console.log(res.data);
+                    })
+
+            }
+        });
         return () => {
             unSubscribe();
         }
