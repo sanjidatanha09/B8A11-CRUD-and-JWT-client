@@ -13,7 +13,8 @@ const Button2 = ({ requestfood ,handleConfirm}) => {
                 </label>
             </th>
             <td>{username}</td>
-            <td><img src={{ userimage }} alt="" /></td>
+            <td><img className='rounded-full' src={userimage } alt="" /></td>
+   
 
             <td>{email}</td>
             <td>{requestdate}</td>

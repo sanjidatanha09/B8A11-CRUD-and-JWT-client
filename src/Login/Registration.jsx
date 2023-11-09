@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -17,6 +17,9 @@ const Registration = () => {
     console.log('location login page', location)
 
     const navigate = useNavigate();
+    useEffect(() => {
+        document.title = "Foodie | Registration";
+    }, [])
 
 
     const handleRegistration = e => {

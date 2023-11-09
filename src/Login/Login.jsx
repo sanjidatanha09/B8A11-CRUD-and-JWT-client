@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGithub, FaGofore } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
@@ -18,6 +18,9 @@ const Login = () => {
     // console.log('location login page', location)
 
     const navigate = useNavigate();
+    useEffect(() => {
+        document.title = "Foodie | Login";
+    }, [])
     
    
 
