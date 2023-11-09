@@ -6,12 +6,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import { FaBeer, FaRegEyeSlash, FaEye } from 'react-icons/fa';
 import { AuthContext } from '../Providers.jsx/AuthProvider';
 import Swal from 'sweetalert2';
+import useAuth from '../Hooks/useAuth';
 
 const Registration = () => {
     const [registererror, setRegistererror] = useState('');
     const [showpassword , setShowpassword] =useState(false);
    
-    const { createUser }= useContext(AuthContext)
+    const { createUser }= useAuth();
 
     const location = useLocation();
     console.log('location login page', location)

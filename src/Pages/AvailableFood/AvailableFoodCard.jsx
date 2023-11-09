@@ -1,10 +1,11 @@
 import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Providers.jsx/AuthProvider';
+import useAuth from '../../Hooks/useAuth';
 
 const AvailableFoodCard = ({ food}) => {
 
-    const { user } = useContext(AuthContext)
+    const { user } = useAuth();
     const {_id, foodname, foodimage, foodquantity, location, date, additionalnotes, foodstatus, donatorname, donatorimage, donatoremail } =food;
 
   
@@ -29,7 +30,7 @@ const AvailableFoodCard = ({ food}) => {
                     </div>
 
 
-                    <p className='text-gray-500 text-base'>{additionalnotes}</p>
+                    <p className='h-[140px] text-gray-500 text-base'>{additionalnotes}</p>
                     <div className='flex justify-between items-center'>
                         <div className='flex justify-center items-center gap-2'>
                             <img className='w-[40px] h-[40px] rounded-full' src={donatorimage} alt="" />

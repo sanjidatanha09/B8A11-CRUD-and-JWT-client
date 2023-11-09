@@ -2,9 +2,10 @@ import React, { useContext, useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../Providers.jsx/AuthProvider';
 import Swal from 'sweetalert2';
+import useAuth from '../../../Hooks/useAuth';
 
 const ManageButton = () => {
-    const { user } = useContext(AuthContext);
+    const { user } = useAuth();
     const foodupdate = useLoaderData();
     console.log(foodupdate)
     useEffect(() => {

@@ -2,10 +2,11 @@ import { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../Providers.jsx/AuthProvider";
 import Swal from "sweetalert2";
+import useAuth from "../../../Hooks/useAuth";
 
 
 const SingleFood = () => {
-    const { user } = useContext(AuthContext);
+    const { user } = useAuth();
     const [time, setTime] = useState(new Date())
     const [currentDate, setCurrentDate] = useState(new Date().toLocaleDateString());
     console.log(currentDate)

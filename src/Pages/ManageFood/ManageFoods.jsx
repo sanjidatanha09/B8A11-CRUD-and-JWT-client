@@ -3,9 +3,10 @@ import { AuthContext } from '../../Providers.jsx/AuthProvider';
 import MFoodCard from './MFoodCard';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import useAuth from '../../Hooks/useAuth';
 
 const ManageFoods = () => {
-    const { user } = useContext(AuthContext)
+    const { user } = useAuth();
     const [managefoods, setManageFood] = useState([]);
 
     const url = `https://assignment-11-server-smoky-mu.vercel.app/somefood?email=${user?.email}`;

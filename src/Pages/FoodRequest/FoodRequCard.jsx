@@ -7,7 +7,7 @@ const FoodRequCard = ({ requestfood,handleDelete }) => {
     return (
         <div className='m-5 lg:m-0 '>
             <div className="card lg:card-side bg-base-100 shadow-xl">
-                <figure><img className=' rounded-xl w-full lg:w-[200px] h-[400px] lg:h-[200px]' src={foodimage} alt="Album" /></figure>
+                <figure><img className='ml-5 rounded-xl w-full lg:w-[200px] h-[400px] lg:h-[200px]' src={foodimage} alt="Album" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{donatorname}</h2>
                     <p>{expiredate}</p>

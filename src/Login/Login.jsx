@@ -4,20 +4,29 @@ import { FaGithub, FaGofore } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaBeer, FaRegEyeSlash, FaEye } from 'react-icons/fa';
-import { AuthContext } from '../Providers.jsx/AuthProvider';
+
 import Lottie from 'lottie-react';
 import loginanimation from '../../public/login.json'
 import axios from 'axios';
+import useAuth from '../Hooks/useAuth';
+
 
 const Login = () => {
     const [showpassword, setShowpassword] = useState(false);
 
-    const { googleSignIn } =useContext(AuthContext)
-    const { signIn } =useContext(AuthContext);
+   
+    const {signIn,googleSignIn} =useAuth();
+
+    // const { signIn } =useContext(AuthContext);
+
+    
     const location = useLocation();
     // console.log('location login page', location)
 
     const navigate = useNavigate();
+
+
+
     useEffect(() => {
         document.title = "Foodie | Login";
     }, [])

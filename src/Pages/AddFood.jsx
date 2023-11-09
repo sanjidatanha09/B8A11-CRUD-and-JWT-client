@@ -1,9 +1,10 @@
 import React, { useContext, useEffect } from 'react';
 import { AuthContext } from '../Providers.jsx/AuthProvider';
 import Swal from 'sweetalert2';
+import useAuth from '../Hooks/useAuth';
 
 const AddFood = () => {
-    const { user } = useContext(AuthContext);
+    const { user } = useAuth();
     useEffect(() => {
         document.title = "Foodie | Add Food";
     }, [])
