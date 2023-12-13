@@ -6,6 +6,8 @@ import Section1 from "./Section1";
 import MeetTeam from "./MeetTeam";
 import Section2 from "./Section2";
 import { useEffect, useState } from "react";
+import Shop from "./Extrasectin/Shop";
+import OurStory from "./Extrasectin/OurStory";
 
 
 const Home = () => {
@@ -23,6 +25,8 @@ const Home = () => {
             <Section1></Section1>
             <Section2></Section2>
             <MeetTeam></MeetTeam>
+            <Shop></Shop>
+            <OurStory></OurStory>
     
             
 
