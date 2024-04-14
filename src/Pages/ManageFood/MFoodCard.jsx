@@ -14,8 +14,6 @@ const MFoodCard = ({ managefood, handleDelete }) => {
             <td>{donatorname}</td>
             <td>{foodname}</td>
             <td>{foodquantity}</td>
-            <td>{foodquantity}</td>
-            <td>{foodquantity}</td><td>{foodquantity}</td><td>{foodquantity}</td>
             <td>
                 <Link to={`/button/${_id}`}>
                     <button className='btn w-[140px]'>Manage Food</button>
@@ -26,6 +24,11 @@ const MFoodCard = ({ managefood, handleDelete }) => {
                 <Link to={`/managebutton/${_id}`}>
                     <button className='btn '>update</button>
                </Link>  
+            </td>
+            <td>
+                <Link to={`/managebutton/${_id}`}>
+                    <button className='btn '>update</button>
+                </Link>
             </td>
         </tr>
 
