@@ -1,18 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import FoodRequCard from './FoodRequCard';
 import Swal from 'sweetalert2';
-import { AuthContext } from '../../Providers.jsx/AuthProvider';
 import axios from 'axios';
 import useAuth from '../../Hooks/useAuth';
 
 const FoodRequest = () => {
     const { user } = useAuth();
     const [requestfoods, setRequFoods] = useState([]);
-
     const url = `https://assignment-11-server-smoky-mu.vercel.app/foodrequest?email=${user?.email}`; 
-
-
     useEffect(() => {
             axios.get(url, { withCredentials: true })
                 .then(res => {
