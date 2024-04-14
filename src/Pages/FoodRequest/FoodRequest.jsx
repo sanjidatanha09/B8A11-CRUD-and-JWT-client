@@ -18,19 +18,9 @@ const FoodRequest = () => {
                 .then(res => {
                     setRequFoods(res.data)
                 })
-            // fetch(url)
-            //     .then(res => res.json())
-            //     .then(data => setManageFood(data))
-
-        // }
-
         document.title = "Foodie | Food Request";
-
     }, [url])
-
-
     const handleDelete = id => {
-
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
