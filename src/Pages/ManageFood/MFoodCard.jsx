@@ -4,16 +4,9 @@ import { Link } from 'react-router-dom';
 const MFoodCard = ({ managefood, handleDelete }) => {
     const { _id, foodname, donatorname, foodstatus, foodquantity, status } = managefood;
 
-
-
-
-
-
     return (
-
         <tr>
-
-            <th>
+        <th>
                 <label>
                     <input type="checkbox" className="checkbox" />
                 </label>
@@ -29,13 +22,10 @@ const MFoodCard = ({ managefood, handleDelete }) => {
                 </Link>             
             </td>
             <td> <button className='btn' onClick={() => handleDelete(_id)}>X</button></td>
-
-
             <td>
                 <Link to={`/managebutton/${_id}`}>
                     <button className='btn '>update</button>
-               </Link>
-                
+               </Link>  
             </td>
         </tr>
 
