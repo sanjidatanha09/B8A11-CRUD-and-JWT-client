@@ -105,15 +105,9 @@ const SingleFood = () => {
 
                     </div>
 
-
-
-
                     <div className="card-actions justify-end">
 
-
-
                         {/* Open the modal using document.getElementById('ID').showModal() method */}
-
 
                         <button className="btn btn-warning text-white font-bold" onClick={() => document.getElementById('my_modal_5').showModal()}>Request Food</button>
 

@@ -3,8 +3,6 @@ import { useLoaderData } from 'react-router-dom';
 import AvailableFood2 from './AvailableFood2';
 
 const AvailableFoods = () => {
-    
-
     const availableFood = useLoaderData();
     console.log(availableFood)
 

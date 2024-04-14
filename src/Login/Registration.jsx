@@ -33,7 +33,7 @@ const Registration = () => {
         const password = form.get('password')
         console.log(displayName, photoURL,email, password);
 
-        //reset error
+        // error
         setRegistererror('');
 
     
@@ -151,11 +151,6 @@ const Registration = () => {
                     <div className="form-control mt-6">
                         <button className="btn btn-warning text-white md:text-xl  lg:text-2xl lg:w-[250px] mx-auto font-bold">Registar</button>
                     </div>
-
-
-
-
-
                 </form>
 
                 
