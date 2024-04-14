@@ -8,13 +8,9 @@ import useAuth from '../../Hooks/useAuth';
 const ManageFoods = () => {
     const { user } = useAuth();
     const [managefoods, setManageFood] = useState([]);
-
     const url = `https://assignment-11-server-smoky-mu.vercel.app/somefood?email=${user?.email}`;
-
-
     useEffect(() => {
         if (user?.email) {
-
             axios.get(url, {withCredentials: true})
             .then(res =>{
                 setManageFood(res.data)
@@ -24,16 +20,10 @@ const ManageFoods = () => {
             //     .then(data => setManageFood(data))
 
         }
-
         document.title = "Foodie | Manage Food";
-
     }, [url])
     console.log(managefoods)
-   
-
-
     const handleDelete = id => {
-
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -44,7 +34,6 @@ const ManageFoods = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-
                 fetch(`https://assignment-11-server-smoky-mu.vercel.app/allfood/${id}`, {
                     method: 'DELETE'
                 })
@@ -62,28 +51,11 @@ const ManageFoods = () => {
 
                         }
                     })
-
-
-
             }
-
-
         });
-
-
     }
-
-    
-    //overflow-x-auto
-    //mt-10 w-[400px] md:w-full lg:w-full
-
-
     return (
         <div>
-
-          
-            
-
             <div className="overflow-x-auto mt-10">
                 <table className=" table table-xs table-pin-rows table-pin-cols">
                     {/* head */}
@@ -96,7 +68,6 @@ const ManageFoods = () => {
                             </th>
                             <th>Donator Name</th>
                             <th>Food Name</th>
-                           
                             <th>Quantity</th>
                             <th>Manage Food </th>
                             <th>Delete</th>
@@ -104,7 +75,6 @@ const ManageFoods = () => {
                         </tr>
                     </thead>
                     <tbody className=''>
-
                       {
                         managefoods.map(managefood =><MFoodCard
                         key={managefood._id}
@@ -113,10 +83,7 @@ const ManageFoods = () => {
                        
                         ></MFoodCard>)
                       }
-
                     </tbody>
-
-
                 </table>
             </div>
         </div>
