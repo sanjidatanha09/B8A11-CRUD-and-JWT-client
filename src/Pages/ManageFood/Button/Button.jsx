@@ -46,8 +46,7 @@ const Button = () => {
                             <th>Requester Name</th>
                             <th>Requester Image</th>
 
-                            <th>Requester Email
-                            </th>
+                            <th>Requester Email</th>
                             <th>Request Time and Date</th>
                             <th>status</th>
 
