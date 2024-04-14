@@ -13,12 +13,12 @@ const MFoodCard = ({ managefood, handleDelete }) => {
             </th>
             <td>{donatorname}</td>
             <td>{foodname}</td>
-
             <td>{foodquantity}</td>
+            <td>{foodquantity}</td>
+            <td>{foodquantity}</td><td>{foodquantity}</td><td>{foodquantity}</td>
             <td>
                 <Link to={`/button/${_id}`}>
                     <button className='btn w-[140px]'>Manage Food</button>
-
                 </Link>             
             </td>
             <td> <button className='btn' onClick={() => handleDelete(_id)}>X</button></td>
