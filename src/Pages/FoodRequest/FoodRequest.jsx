@@ -12,11 +12,8 @@ const FoodRequest = () => {
 
     const url = `https://assignment-11-server-smoky-mu.vercel.app/foodrequest?email=${user?.email}`; 
 
-   
 
     useEffect(() => {
-        // if (user?.email) {
-
             axios.get(url, { withCredentials: true })
                 .then(res => {
                     setRequFoods(res.data)
@@ -59,18 +56,11 @@ const FoodRequest = () => {
                             )
                             const remaining = requestfoods.filter(requestfood => requestfood._id !== id);
                             setRequFoods(remaining);
-
                         }
                     })
-
-
-
             }
 
-
         });
-
-
     }
 
     return (

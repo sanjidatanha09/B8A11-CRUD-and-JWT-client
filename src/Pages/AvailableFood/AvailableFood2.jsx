@@ -3,12 +3,10 @@ import AvailableFoodCard from './AvailableFoodCard';
 import { useLoaderData } from 'react-router-dom';
 
 const AvailableFood2 = ({ availableFood }) => {
-    
     const foodall = useLoaderData()
     console.log(foodall);
     const [dateList, setDateList] = useState(foodall);
     const [sortList, setSortList] = useState([]);
-
     useEffect(() =>{
         const sortData=() =>{
             dateList.sort((a,b) =>new Date(a.date) - new Date(b.date))

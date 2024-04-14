@@ -2,8 +2,6 @@ import React from 'react';
 
 const FoodRequCard = ({ requestfood,handleDelete }) => {
     const { _id, foodname, foodimage, foodid, email, requestdate, donatoremail, donatorname, location, expiredate, additionalnotes, money, username, userimage, foodstatus } = requestfood;
-
-
     return (
         <div className='m-5 lg:m-0 '>
             <div className="card lg:card-side bg-base-100 shadow-xl">
