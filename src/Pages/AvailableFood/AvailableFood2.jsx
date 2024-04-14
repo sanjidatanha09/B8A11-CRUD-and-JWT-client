@@ -23,7 +23,7 @@ const AvailableFood2 = ({ availableFood }) => {
             <div className='text-center font-bold md:text-2xl lg:text-3xl mb-5'>
                 {/* Total Available Food:{fullCampaignes.length} */}
             </div>
-            <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-5 px-2  lg:px-0'>
+            <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-5 px-2 lg:px-0'>
                 {
                     availableFood?.map(food => <AvailableFoodCard
                         key={food._id}
