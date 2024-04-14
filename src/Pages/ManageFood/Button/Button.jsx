@@ -32,7 +32,6 @@ const Button = () => {
     return (
         <div>
             <h1>{requestfoods.length}</h1>
-
             <div className="overflow-x-auto mt-10">
                 <table className="text-center table table-xs table-pin-rows table-pin-cols">
                     {/* head */}
@@ -45,27 +44,20 @@ const Button = () => {
                             </th>
                             <th>Requester Name</th>
                             <th>Requester Image</th>
-
                             <th>Requester Email</th>
                             <th>Request Time and Date</th>
                             <th>status</th>
-
                         </tr>
                     </thead>
                     <tbody className=''>
-
                         {
                             requestfoods.map(requestfood => <Button2
                                 key={requestfood._id}
                                 requestfood={requestfood}
                                 handleConfirm={handleConfirm}
-
                             ></Button2>)
                         }
-
                     </tbody>
-
-
                 </table>
             </div>
 
