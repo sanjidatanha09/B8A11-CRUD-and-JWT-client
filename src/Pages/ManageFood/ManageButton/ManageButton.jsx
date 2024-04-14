@@ -3,7 +3,6 @@ import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../Providers.jsx/AuthProvider';
 import Swal from 'sweetalert2';
 
-
 const ManageButton = () => {
     const foodupdate = useLoaderData();
     console.log(foodupdate)
