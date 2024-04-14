@@ -108,7 +108,6 @@ const ManageButton = () => {
                                     <span className="label-text text-orange-700 font-bold lg:text-xl">Additional Notes</span>
                                 </label>
                                 <label className="input-group">
-
                                     <input type="text" defaultValue={additionalnotes} name="additionalnotes" placeholder="additional notes" className="input input-bordered w-full text-orange-500" />
                                 </label>
                             </div>
@@ -119,19 +118,9 @@ const ManageButton = () => {
                                     <span className="label-text text-orange-700 font-bold lg:text-xl">Food Status</span>
                                 </label>
                                 <label className="input-group">
-
                                     <input type="text" defaultValue={foodstatus} name="foodstatus" placeholder="food status"  className="input text-orange-500 input-bordered w-full" />
                                 </label>
                             </div>
-                            {/* <div className="form-control md:w-3/6 lg:w-3/6">
-                                <label className="label">
-                                    <span className="label-text text-orange-700 font-bold lg:text-xl">Donator Email</span>
-                                </label>
-                                <label className="input-group">
-
-                                    <input type="email"  defaultValue={user?.email} name="email" placeholder="donator email" className="input input-bordered w-full text-orange-500" />
-                                </label>
-                            </div> */}
                         </div>
                         <div className='pt-10'>
                             <button className="btn btn-warning text-white lg:text-2xl ">Update Food</button>
