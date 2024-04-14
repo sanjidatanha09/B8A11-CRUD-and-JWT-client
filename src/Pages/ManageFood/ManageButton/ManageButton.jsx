@@ -2,22 +2,18 @@ import React, { useContext, useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../Providers.jsx/AuthProvider';
 import Swal from 'sweetalert2';
-import useAuth from '../../../Hooks/useAuth';
+
 
 const ManageButton = () => {
-    const { user } = useAuth();
     const foodupdate = useLoaderData();
     console.log(foodupdate)
     useEffect(() => {
         document.title = "Foodie | Food Update";
     }, [])
-
     const { _id, foodname, foodimage, foodquantity, location, date, additionalnotes, foodstatus } = foodupdate;
-
     const handleUpdateFood = event => {
         event.preventDefault();
         const form = event.target;
-
         const foodname = form.foodname.value;
         const foodimage = form.foodimage.value;
         // const donatorimage = user?.photoURL;
@@ -28,11 +24,8 @@ const ManageButton = () => {
         const additionalnotes = form.additionalnotes.value;
         const foodstatus = form.foodstatus.value;
         // const email = user?.email;
-
         const updatedFood = { foodname, foodimage, foodquantity, location, date, additionalnotes, foodstatus }
-
         console.log(updatedFood);
-
         //send data to the server 
         fetch(`https://assignment-11-server-smoky-mu.vercel.app/onefood/${_id}`, {
             method: 'PUT',
@@ -51,29 +44,17 @@ const ManageButton = () => {
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     })
-
                 }
             })
-
     }
 
     return (
         <div>
-          
             <div className='mt-16 '>
-
-
-
                 <div className='border text-gray-600 font-bold text-3xl max-w-4xl mx-auto text-center  p-12 bg-[#F4F3F0]'>
-                    
-
-
-
-
                     <h2 className='text-5xl font-bold text-orange-600 mb-5'>Update Food : {foodname}</h2>
                     <form onSubmit={handleUpdateFood}>
                         <div className='md:flex lg:flex justify-between items-center gap-6 '>
-
                             <div className="form-control md:w-3/6 lg:w-3/6">
                                 <label className="label">
                                     <span className="label-text text-orange-700 font-bold lg:text-xl">Food Name</span>
@@ -83,7 +64,6 @@ const ManageButton = () => {
                                     <input type="text" defaultValue={foodname} name="foodname" placeholder="foodname " className="input input-bordered w-full text-orange-500 font-bold lg:text-xl" />
                                 </label>
                             </div>
-
                             <div className="form-control md:w-3/6 lg:w-3/6">
                                 <label className="label">
                                     <span className="label-text text-orange-700 font-bold lg:text-xl"> Food Image</span>
@@ -93,33 +73,7 @@ const ManageButton = () => {
                                     <input type="text" defaultValue={foodimage} name="foodimage" placeholder="food image" className=" text-orange-500 input input-bordered w-full" />
                                 </label>
                             </div>
-
                         </div>
-
-                        {/* <div className='md:flex lg:flex justify-between items-center gap-6 '>
-
-                            <div className="form-control md:w-3/6 lg:w-3/6">
-                                <label className="label">
-                                    <span className="label-text text-orange-700 font-bold lg:text-xl">Donator Image</span>
-                                </label>
-                                <label className="input-group">
-
-                                    <input type="text" name="donatorimage" defaultValue={user?.photoURL} placeholder="donator image " className="input input-bordered w-full text-orange-500 font-bold lg:text-xl" />
-                                </label>
-                            </div>
-
-                            <div className="form-control md:w-3/6 lg:w-3/6">
-                                <label className="label">
-                                    <span className="label-text text-orange-700 font-bold lg:text-xl"> Donator Name</span>
-                                </label>
-                                <label className="input-group">
-
-                                    <input type="text" defaultValue={user?.displayName} name="donatorname" placeholder="donator name" className="input text-orange-500 input-bordered w-full" />
-                                </label>
-                            </div>
-
-                        </div> */}
-
                         <div className='md:flex lg:flex justify-between items-center gap-6'>
                             <div className="form-control md:w-3/6 lg:w-3/6">
                                 <label className="label">
@@ -140,7 +94,6 @@ const ManageButton = () => {
                                 </label>
                             </div>
                         </div>
-
                         <div className='md:flex lg:flex justify-between items-center gap-6'>
                             <div className="form-control md:w-3/6 lg:w-3/6">
                                 <label className="label">
@@ -181,24 +134,11 @@ const ManageButton = () => {
                                 </label>
                             </div> */}
                         </div>
-
-
                         <div className='pt-10'>
                             <button className="btn btn-warning text-white lg:text-2xl ">Update Food</button>
-
                         </div>
-
-
-
-
-
-
                     </form>
-
-
-
                 </div>
-            
             </div>
         </div>
     );
